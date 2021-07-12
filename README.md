@@ -102,7 +102,7 @@ Use mock data to evaluate people. Use distance to help define more people.
 
 ## Wireframes
 [Add picture of your hand sketched wireframes in this section]
-<img src="https://imgur.com/6PY4IkY" width=600>
+<img src="https://i.imgur.com/6PY4IkY.png" width=600>
 
 ### [BONUS] Digital Wireframes & Mockups
 
