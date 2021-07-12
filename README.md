@@ -44,11 +44,9 @@ Use mock data to evaluate people. Use distance to help define more people.
 
 **Required Must-have Stories**
 
-* [fill in your required user stories here]
 * User can view feed
-* User can request services from someone
+* User can match with someone
 * user can create an account
-* user can find people based on requirements
 * user can login
 * users can be on the feed
 
@@ -59,6 +57,8 @@ Use mock data to evaluate people. Use distance to help define more people.
 * user can see reviews
 * user can see who similar people
 * user can find people based on location specs
+* user can find people based on requirements
+* user can message
 
 ### 2. Screen Archetypes
 
