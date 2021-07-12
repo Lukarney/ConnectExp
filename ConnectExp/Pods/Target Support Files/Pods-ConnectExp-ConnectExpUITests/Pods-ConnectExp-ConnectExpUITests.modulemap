@@ -1,0 +1,6 @@
+framework module Pods_ConnectExp_ConnectExpUITests {
+  umbrella header "Pods-ConnectExp-ConnectExpUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}

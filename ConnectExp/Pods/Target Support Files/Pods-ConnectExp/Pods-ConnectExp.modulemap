@@ -1,0 +1,6 @@
+framework module Pods_ConnectExp {
+  umbrella header "Pods-ConnectExp-umbrella.h"
+
+  export *
+  module * { export * }
+}
