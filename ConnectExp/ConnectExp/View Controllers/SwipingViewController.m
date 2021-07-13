@@ -6,9 +6,12 @@
 //
 
 #import "SwipingViewController.h"
+#import "DraggableView.h"
 
 @interface SwipingViewController ()
 @property (weak, nonatomic) IBOutlet UIView *card;
+@property (strong, nonatomic) DraggableView *draggableView;
+@property (strong, nonatomic) NSMutableArray* arrayOfProfiles;
 
 @end
 
@@ -18,6 +21,11 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
 }
+- (IBAction)panCard:(UIPanGestureRecognizer *)sender {
+    UIView *card = sender.view;
+    
+}
+
 
 /*
 #pragma mark - Navigation
