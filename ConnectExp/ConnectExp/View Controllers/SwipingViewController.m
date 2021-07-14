@@ -20,9 +20,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    DraggableView *draggableBackground = [[DraggableView alloc]initWithFrame:self.view.frame];
+    [self.view addSubview:draggableBackground];
 }
 - (IBAction)panCard:(UIPanGestureRecognizer *)sender {
-    UIView *card = sender.view;
     
 }
 
