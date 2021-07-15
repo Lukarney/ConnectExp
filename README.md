@@ -45,20 +45,18 @@ Use mock data to evaluate people. Use distance to help define more people.
 **Required Must-have Stories**
 
 * User can view feed
-* User can match with someone
+* User can request to connect
 * user can create an account
 * user can login
 * users can be on the feed
+
 
 **Optional Nice-to-have Stories**
 
 * user can tap on photos for a detailed view
 * user can view profile
-* user can see reviews
-* user can see who similar people
-* user can find people based on location specs
-* user can find people based on requirements
 * user can message
+* User can match with another user
 
 ### 2. Screen Archetypes
 
@@ -80,7 +78,7 @@ Use mock data to evaluate people. Use distance to help define more people.
 **Tab Navigation** (Tab to Screen)
 
 * Home feed
-* Search/ define users
+* Settings/define search
 * Post 
 
 **Flow Navigation** (Screen to Screen)
@@ -149,3 +147,82 @@ Profile
 Message
     -(POST) Create new message
     -(GET) Query messages
+    
+
+## Ambiguous Problem
+
+_*Ambiguous issue: How can I get two people with similar interest and based on proximity to connect.*_
+GIVEN: 
+
+* A List of user’s Profile :
+* interest(ID e.g. “1”)
+    * ID links to interest. e.g. 1 represents cooking
+* what they want(string “Partner”)
+    * List of options will be given to the user e.g.
+        * “Partner”
+        * “Master”
+        * “Noob”
+        * “Exchange”
+*  [optional] description of what the user is willing to give(string e.g “I want to learn more about hiking and am willing to give...”)
+* location
+* proximity parameter (Integer e.g. 50 miles)
+
+OUTPUT: List of compatible users based on priority of. Dictionary where key is UserID and each value is a possible user 
+
+Part 1: What defines a good match? 
+→ The proximity weighed heavily 
+→ What the user wants compared to what they ask for 
+→ Add weight of what defines a good match
+→ Sorting and comparison
+Part 2: What constraints do I have
+→ Number of users
+→ Locations will be between certain points
+→ Interest 
+Part 3: How good do I want my solution to be
+→ What makes a good score
+→ Should I make it Optimal vs. accurate, 
+→ 
+
+## Milestones
+
+*Milestones Layout:*
+Week 3:
+
+    * Login & Logout
+        * User should be able to login into the program and the user should be exit back to the login screen and not be
+    * Creating Account
+        * User should be able to create an account and use said account to log into the app
+
+Week 4:
+
+    * Swiping motion
+        * User should be able to. swipe a card
+    * Viewing feed
+        * User should be able to view multiple people on their “feed” and swipe through them
+
+Week 5:
+
+    * Matching with User
+        * Users should be able to match with a user that notifies the other user of their request
+    * Algorithm
+        * Algorithm that allows one user to find a compatible user to then request to meet up
+
+Week 6:
+
+    * Overflow time if work does not get finished in time
+    * [optional]Messaging
+        * allow the users to message one another 
+
+
+Week 7:
+
+    * Overflow time if work does not get finished in time
+    * [optional]Search
+        * Allows the user to search through matches
+
+Week 8:
+
+    * Finalize UI 
+        * Touch up UI to ensure that it is cohesive and presentable 
+
+
