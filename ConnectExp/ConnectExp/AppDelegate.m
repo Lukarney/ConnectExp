@@ -15,8 +15,17 @@
 @implementation AppDelegate
 
 
-- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(  NSDictionary *)launchOptions {
+
+    ParseClientConfiguration *config = [ParseClientConfiguration  configurationWithBlock:^(id<ParseMutableClientConfiguration> configuration) {
+
+        configuration.applicationId = @"ledMwPW4gaZE2cv1JB1R3Jj7XbqhXq9i9orlhwBb";
+        configuration.clientKey = @"r728IQGzOtHu5XBLXljLN3nb1IgKqnWs9QnWRo1k";
+        configuration.server = @"https://parseapi.back4app.com";
+    }];
+
+    [Parse initializeWithConfiguration:config];
+
     return YES;
 }
 
@@ -37,19 +46,7 @@
     // Use this method to release any resources that were specific to the discarded scenes, as they will not return.
 }
 
-- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(  NSDictionary *)launchOptions {
 
-    ParseClientConfiguration *config = [ParseClientConfiguration  configurationWithBlock:^(id<ParseMutableClientConfiguration> configuration) {
-
-        configuration.applicationId = @"YOUR_APP_ID"; // <- UPDATE
-        configuration.clientKey = @"YOUR_CLIENT_KEY"; // <- UPDATE
-        configuration.server = @"https://parseapi.back4app.com";
-    }];
-
-    [Parse initializeWithConfiguration:config];
-
-    return YES;
-}
 
 
 @end
