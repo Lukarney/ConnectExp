@@ -26,11 +26,11 @@
             </objects>
             <point key="canvasLocation" x="-1058" y="820"/>
         </scene>
-        <!--View Controller-->
+        <!--Edit Profile View Controller-->
         <scene sceneID="ftB-y4-Cpp">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0qE-5r-tMw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-                <viewController id="ta2-6h-Jri" sceneMemberID="viewController">
+                <viewController id="ta2-6h-Jri" customClass="EditProfileViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="MuX-8n-yJt">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -139,9 +139,27 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="update info"/>
                                 <connections>
-                                    <segue destination="2az-8X-bPd" kind="show" id="Atj-eg-tbx"/>
+                                    <segue destination="X9A-4R-XgC" kind="presentation" id="j0m-qS-Bdq"/>
                                 </connections>
                             </button>
+                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AZQ-nz-N0z">
+                                <rect key="frame" x="1" y="6" width="414" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <items>
+                                    <navigationItem title="Edit Profile" id="r3G-a2-phA">
+                                        <barButtonItem key="leftBarButtonItem" style="plain" id="eSc-HJ-WbA">
+                                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="H3n-pN-Y5V">
+                                                <rect key="frame" x="20" y="13" width="92" height="30"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <state key="normal" title="Logout"/>
+                                            </button>
+                                            <connections>
+                                                <action selector="logoutPressed:" destination="ta2-6h-Jri" id="bCT-2q-MkH"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="RfW-fc-JVF"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -166,7 +184,7 @@
         <!--Profiles-->
         <scene sceneID="4fU-mC-m4e">
             <objects>
-                <viewController title="Profiles" id="2az-8X-bPd" sceneMemberID="viewController">
+                <viewController title="Profiles" modalPresentationStyle="fullScreen" id="2az-8X-bPd" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="6yF-hK-Cy4">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -496,7 +514,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="Atj-eg-tbx"/>
+        <segue reference="j0m-qS-Bdq"/>
         <segue reference="B9h-CE-8K5"/>
     </inferredMetricsTieBreakers>
     <resources>

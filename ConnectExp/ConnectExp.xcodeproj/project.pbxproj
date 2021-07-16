@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		552109578F7E43475CAB626E /* Pods_ConnectExp_ConnectExpUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E0529CC36B74606E2919FDB4 /* Pods_ConnectExp_ConnectExpUITests.framework */; };
+		B91D213526A1DF420053A705 /* EditProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B91D213426A1DF420053A705 /* EditProfileViewController.m */; };
 		B9E5AD32269CB33700E348E3 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B9E5AD31269CB33700E348E3 /* AppDelegate.m */; };
 		B9E5AD35269CB33700E348E3 /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B9E5AD34269CB33700E348E3 /* SceneDelegate.m */; };
 		B9E5AD38269CB33700E348E3 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B9E5AD37269CB33700E348E3 /* ViewController.m */; };
@@ -47,6 +48,8 @@
 		3455D38D209B0E273297D15D /* Pods-ConnectExp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ConnectExp.release.xcconfig"; path = "Target Support Files/Pods-ConnectExp/Pods-ConnectExp.release.xcconfig"; sourceTree = "<group>"; };
 		3468AC2715A302A2219B84FA /* Pods-ConnectExpTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ConnectExpTests.debug.xcconfig"; path = "Target Support Files/Pods-ConnectExpTests/Pods-ConnectExpTests.debug.xcconfig"; sourceTree = "<group>"; };
 		39D804E54292FCAC428D5FD7 /* Pods_ConnectExpTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ConnectExpTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B91D213326A1DF420053A705 /* EditProfileViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EditProfileViewController.h; sourceTree = "<group>"; };
+		B91D213426A1DF420053A705 /* EditProfileViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EditProfileViewController.m; sourceTree = "<group>"; };
 		B9E5AD2D269CB33700E348E3 /* ConnectExp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ConnectExp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B9E5AD30269CB33700E348E3 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		B9E5AD31269CB33700E348E3 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -208,6 +211,8 @@
 				B9E5AD69269CE7B000E348E3 /* SwipingViewController.m */,
 				B9E5AD6E269E002F00E348E3 /* LoginViewController.h */,
 				B9E5AD6F269E002F00E348E3 /* LoginViewController.m */,
+				B91D213326A1DF420053A705 /* EditProfileViewController.h */,
+				B91D213426A1DF420053A705 /* EditProfileViewController.m */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -463,6 +468,7 @@
 				B9E5AD32269CB33700E348E3 /* AppDelegate.m in Sources */,
 				B9E5AD6A269CE7B000E348E3 /* SwipingViewController.m in Sources */,
 				B9E5AD70269E002F00E348E3 /* LoginViewController.m in Sources */,
+				B91D213526A1DF420053A705 /* EditProfileViewController.m in Sources */,
 				B9E5AD73269E194E00E348E3 /* Profile.m in Sources */,
 				B9E5AD43269CB33800E348E3 /* main.m in Sources */,
 				B9E5AD35269CB33700E348E3 /* SceneDelegate.m in Sources */,
