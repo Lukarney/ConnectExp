@@ -19,18 +19,18 @@
     return @"Post";
 }
 
-+ (void) postProfileImage: ( UIImage * _Nullable )image withCaption: ( NSString * _Nullable )caption withCompletion: (PFBooleanResultBlock  _Nullable)completion {
++ (void)postProfileImage:(UIImage *_Nullable)image
+              withCaption:(NSString *_Nullable)caption
+           withCompletion:(PFBooleanResultBlock _Nullable)completion {
     
     Profile *newProfile = [Profile new];
     newProfile.image = [self getPFFileFromImage:image];
     newProfile.author = [PFUser currentUser];
     newProfile.biography = caption;
-    
     [newProfile saveInBackgroundWithBlock: completion];
 }
 
 + (PFFileObject *)getPFFileFromImage: (UIImage * _Nullable)image {
- 
     // check if image is not nil
     if (!image) {
         return nil;

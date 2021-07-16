@@ -18,6 +18,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, strong) NSString *biography;
 @property (nonatomic, strong) PFFileObject *image;
+@property (nonatomic, strong) NSMutableArray *interest;
 
 + (void) postProfileImage: ( UIImage * _Nullable )image withCaption: ( NSString * _Nullable )caption withCompletion: (PFBooleanResultBlock  _Nullable)completion;
 

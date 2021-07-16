@@ -41,6 +41,9 @@
                                 <state key="normal" backgroundImage="camera-l-1">
                                     <color key="titleColor" systemColor="systemYellowColor"/>
                                 </state>
+                                <connections>
+                                    <action selector="imagePressed:" destination="ta2-6h-Jri" eventType="touchUpInside" id="F7h-TH-Mqq"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Interest" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HDV-sg-pT9">
                                 <rect key="frame" x="29" y="486" width="58" height="21"/>
@@ -52,32 +55,47 @@
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jf2-XW-GQM">
                                 <rect key="frame" x="36" y="528" width="97" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Food &amp; Drinks"/>
+                                <state key="normal" title="Food &amp; Drinks">
+                                    <color key="titleColor" systemColor="systemOrangeColor"/>
+                                </state>
+                                <state key="selected" title="Food &amp; Drinks">
+                                    <color key="titleColor" systemColor="systemBackgroundColor"/>
+                                </state>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6vT-R5-QTX">
                                 <rect key="frame" x="42" y="654" width="45" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Buddy"/>
+                                <state key="normal" title="Buddy">
+                                    <color key="titleColor" systemColor="systemOrangeColor"/>
+                                </state>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o70-zK-Wvq">
                                 <rect key="frame" x="103" y="654" width="118" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Master Exchange"/>
+                                <state key="normal" title="Master Exchange">
+                                    <color key="titleColor" systemColor="systemOrangeColor"/>
+                                </state>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gFf-YA-m8e">
                                 <rect key="frame" x="244" y="653" width="118" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Novice Exchange"/>
+                                <state key="normal" title="Novice Exchange">
+                                    <color key="titleColor" systemColor="systemOrangeColor"/>
+                                </state>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T4Z-46-NnT">
                                 <rect key="frame" x="170" y="528" width="41" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Music"/>
+                                <state key="normal" title="Music">
+                                    <color key="titleColor" systemColor="systemOrangeColor"/>
+                                </state>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JkN-57-WB3">
                                 <rect key="frame" x="287" y="528" width="48" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Games"/>
+                                <state key="normal" title="Games">
+                                    <color key="titleColor" systemColor="systemOrangeColor"/>
+                                </state>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Add Image" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zVf-tq-Rfr">
                                 <rect key="frame" x="29" y="84" width="82" height="21"/>
@@ -92,11 +110,10 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="sT9-nD-N1a">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="Write here" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="sT9-nD-N1a">
                                 <rect key="frame" x="41" y="292" width="240" height="128"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <color key="backgroundColor" systemColor="quaternarySystemFillColor"/>
                                 <color key="textColor" systemColor="labelColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -177,6 +194,13 @@
                             </button>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="bioField" destination="sT9-nD-N1a" id="DfL-xy-STI"/>
+                        <outlet property="imageButton" destination="DjV-MB-0dv" id="Wlk-zH-cNv"/>
+                        <outlet property="passwordField" destination="h60-zr-NiJ" id="UOy-TV-dfT"/>
+                        <outlet property="updateButton" destination="TKM-zH-rVF" id="ogU-gW-L9b"/>
+                        <outlet property="usernameField" destination="sfr-xh-yhu" id="j3N-O2-fAj"/>
+                    </connections>
                 </viewController>
             </objects>
             <point key="canvasLocation" x="-1059.4202898550725" y="1619.8660714285713"/>
@@ -255,7 +279,7 @@
                         <viewLayoutGuide key="safeArea" id="LV5-re-elb"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item 2" id="cnS-A2-lF3"/>
+                    <tabBarItem key="tabBarItem" title="Profile" id="cnS-A2-lF3"/>
                     <navigationItem key="navigationItem" id="e0S-KA-zEK"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UKb-dt-vZM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -295,6 +319,9 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="AMG-O5-nQO" kind="presentation" id="gMP-4I-6SC"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -302,11 +329,36 @@
                         <viewLayoutGuide key="safeArea" id="633-hi-Nd2"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item 1" id="nzt-dr-lAA"/>
+                    <tabBarItem key="tabBarItem" title="Matches" id="nzt-dr-lAA" userLabel="Messaging"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Vgy-cj-oNN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1342.0289855072465" y="1619.8660714285713"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="2UF-1I-S77">
+            <objects>
+                <viewController id="AMG-O5-nQO" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="NzE-4K-HVA">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="628" translatesAutoresizingMaskIntoConstraints="NO" id="QQo-hN-XJX">
+                                <rect key="frame" x="0.0" y="61" width="414" height="628"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="QQo-hN-XJX" id="c2Q-7V-7Ks">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="628"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="Gcz-lU-2WO"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="56a-0I-i2o" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1337.68115942029" y="2365.8482142857142"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="j5m-X7-lZv">
@@ -318,14 +370,14 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>
-                        <segue destination="ejh-Ji-avb" kind="relationship" relationship="viewControllers" id="4sQ-q5-Baf"/>
                         <segue destination="2az-8X-bPd" kind="relationship" relationship="viewControllers" id="hGJ-fb-3Jz"/>
+                        <segue destination="ejh-Ji-avb" kind="relationship" relationship="viewControllers" id="4sQ-q5-Baf"/>
                         <segue destination="SUG-Mh-TdL" kind="relationship" relationship="viewControllers" id="BLP-9b-WIf"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2Ih-Zd-dT5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="599" y="820"/>
+            <point key="canvasLocation" x="1339" y="820"/>
         </scene>
         <!--Login View Controller-->
         <scene sceneID="tne-QT-ifu">
@@ -351,7 +403,7 @@
                                 <state key="normal" title="Sign up"/>
                                 <connections>
                                     <action selector="signupPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="jKs-eb-8mr"/>
-                                    <segue destination="eyA-aI-JIW" kind="show" id="kA1-mD-mM1"/>
+                                    <segue destination="eyA-aI-JIW" kind="show" identifier="signupSegue" id="kA1-mD-mM1"/>
                                 </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="username" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dgl-O7-HeB">
@@ -399,11 +451,11 @@
             </objects>
             <point key="canvasLocation" x="18.840579710144929" y="93.75"/>
         </scene>
-        <!--Item-->
+        <!--Feed-->
         <scene sceneID="NYn-Ue-Dve">
             <objects>
                 <navigationController id="SUG-Mh-TdL" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="xuS-xh-xf7"/>
+                    <tabBarItem key="tabBarItem" title="Feed" id="xuS-xh-xf7"/>
                     <navigationItem key="navigationItem" id="AQX-f3-Fxd"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="idZ-P7-O3U">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
@@ -415,7 +467,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="I1e-ZF-3EX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2257" y="820"/>
+            <point key="canvasLocation" x="2643" y="1620"/>
         </scene>
         <!--Swiping View Controller-->
         <scene sceneID="usB-dd-hOI">
@@ -510,17 +562,20 @@
                     </connections>
                 </panGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="3185.507246376812" y="819.64285714285711"/>
+            <point key="canvasLocation" x="2642" y="2366"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="j0m-qS-Bdq"/>
+        <segue reference="aIG-VW-fa2"/>
         <segue reference="B9h-CE-8K5"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="camera-l-1" width="30" height="30"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="quaternarySystemFillColor">
+            <color red="0.45490196078431372" green="0.45490196078431372" blue="0.50196078431372548" alpha="0.080000000000000002" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
