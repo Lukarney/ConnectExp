@@ -131,6 +131,16 @@ Use mock data to evaluate people. Use distance to help define more people.
 | Requested  | array of users |  To identify what users responded to post
 |
 
+Messages
+| Property   | Type           | Description |
+| --------   | --------       | -------- |
+| ObjectID   | String.        | unique ID for the post 
+| Sender.    | Pointer to user     | To hold the data of the sender     |
+| Reciever.    | Pointer to user     | To hold the data of the Reciever     |
+| image.     | File.          |  image the author puts on the post
+| Text       | String         |  text the author puts on his post
+| Created at | DateTime       |  date for when the post is created
+
 ## Parse Network Request
 
 Home Feed Screen
@@ -190,15 +200,18 @@ Week 3:
 
     * Login & Logout
         * User should be able to login into the program and the user should be exit back to the login screen and not be
-    * Creating Account
-        * User should be able to create an account and use said account to log into the app
+    *Skeleton
+        * Should have a basic outline for what models, controllers, and view I want while also having TODO functions to implement
+  
 
 Week 4:
-
+    
     * Swiping motion
         * User should be able to. swipe a card
     * Viewing feed
         * User should be able to view multiple people on their “feed” and swipe through them
+    * Creating Account
+        * User should be able to create an account and use said account to log into the app
 
 Week 5:
 
