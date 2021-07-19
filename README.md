@@ -196,7 +196,7 @@ Part 3: How good do I want my solution to be
 ## Milestones
 
 *Milestones Layout:*
-Week 3:
+Week 4:
 
     * Login & Logout
         * User should be able to login into the program and the user should be exit back to the login screen and not be
@@ -204,7 +204,7 @@ Week 3:
         * Should have a basic outline for what models, controllers, and view I want while also having TODO functions to implement
   
 
-Week 4:
+Week 5:
     
     * Swiping motion
         * User should be able to. swipe a card
@@ -213,29 +213,29 @@ Week 4:
     * Creating Account
         * User should be able to create an account and use said account to log into the app
 
-Week 5:
+Week 6:
 
     * Matching with User
         * Users should be able to match with a user that notifies the other user of their request
     * Algorithm
         * Algorithm that allows one user to find a compatible user to then request to meet up
 
-Week 6:
+Week 7:
 
     * Overflow time if work does not get finished in time
     * [optional]Messaging
         * allow the users to message one another 
 
 
-Week 7:
+Week 8:
 
     * Overflow time if work does not get finished in time
     * [optional]Search
         * Allows the user to search through matches
-
-Week 8:
-
     * Finalize UI 
         * Touch up UI to ensure that it is cohesive and presentable 
+
+
+   
 
 
