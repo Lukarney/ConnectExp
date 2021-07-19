@@ -52,7 +52,7 @@
     if([segue.identifier isEqualToString:@"signupSegue"]){
         UINavigationController *nav = [segue destinationViewController];
         EditProfileViewController *newuser = (EditProfileViewController *)[nav topViewController];
-        newuser.isNewUser = (Boolean *)TRUE;
+        newuser.isNewUser = (BOOL *)YES;
         
         
         

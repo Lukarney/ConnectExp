@@ -202,6 +202,7 @@
                     <connections>
                         <outlet property="bioField" destination="sT9-nD-N1a" id="DfL-xy-STI"/>
                         <outlet property="imageButton" destination="DjV-MB-0dv" id="Wlk-zH-cNv"/>
+                        <outlet property="navigationTitle" destination="r3G-a2-phA" id="eDH-SU-bHM"/>
                         <outlet property="passwordField" destination="h60-zr-NiJ" id="UOy-TV-dfT"/>
                         <outlet property="updateButton" destination="TKM-zH-rVF" id="ogU-gW-L9b"/>
                         <outlet property="usernameField" destination="sfr-xh-yhu" id="j3N-O2-fAj"/>
@@ -270,7 +271,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Edit"/>
                                 <connections>
-                                    <segue destination="ta2-6h-Jri" kind="show" id="B9h-CE-8K5"/>
+                                    <segue destination="ta2-6h-Jri" kind="show" identifier="editProfileSegue" id="B9h-CE-8K5"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="interest:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LLt-0g-wo4">

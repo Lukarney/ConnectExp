@@ -17,9 +17,10 @@
 @property (weak, nonatomic) IBOutlet UITextField *passwordField;
 @property (weak, nonatomic) IBOutlet UITextView *bioField;
 @property (weak, nonatomic) IBOutlet UIButton *updateButton;
+@property (weak, nonatomic) IBOutlet UINavigationItem *navigationTitle;
 @property (weak,nonatomic) UIImage *uiImageSelected;
-@property (weak, nonatomic) NSMutableArray *arrayOfInterest;
-
+@property (strong, nonatomic) NSMutableArray *arrayOfInterest;
+@property (weak, nonatomic) PFUser *userID;
 @end
 
 @implementation EditProfileViewController
@@ -29,27 +30,37 @@
     // Do any additional setup after loading the view.
     if (!self.isNewUser){
         [self.updateButton setTitle:@"update info" forState:UIControlStateNormal];
+        [self.navigationTitle setTitle:@"Edit Profile"];
     }
     else if(self.isNewUser){
         [self.updateButton setTitle:@"Create account" forState:UIControlStateNormal];
+        [self.navigationTitle setTitle:@"Registration"];
     }
 }
 - (IBAction)updateInfoPressed:(id)sender {
     if (!self.isNewUser){
-        
+        //TODO: Query user and update information
         
     }
     else if(self.isNewUser){
-        [self signupUser];
         Profile *newProfile = (Profile *)[PFObject objectWithClassName:@"ConnectExpProfile"];
+        [self signupUser];
         //gets image and saves it
-        NSData *imgData = UIImagePNGRepresentation(self.uiImageSelected);
-        newProfile[@"photo"] = [PFFileObject fileObjectWithName:@"image.png" data:imgData contentType:@"image/png"];
+        if( self.uiImageSelected !=nil){
+            NSData *imgData = UIImagePNGRepresentation(self.uiImageSelected);
+            newProfile[@"photo"] = [PFFileObject fileObjectWithName:@"image.png" data:imgData contentType:@"image/png"];
+        }
+        else{
+            NSData *imgData = UIImagePNGRepresentation(self.imageButton.currentBackgroundImage);
+            newProfile[@"photo"] = [PFFileObject fileObjectWithName:@"image.png" data:imgData contentType:@"image/png"];
+        }
+        
         newProfile[@"bio"] = self.bioField.text;
-//        newProfile[@"username"] = self.usernameField.text;
-//        self.arrayOfInterest = [NSMutableArray array];
-//        [self.arrayOfInterest addObject:[NSNumber numberWithInt:1]];
-//        newProfile[@"Interest"] = self.arrayOfInterest;
+        newProfile[@"username"] = self.usernameField.text;
+        self.arrayOfInterest = [[NSMutableArray array] init];
+        [self.arrayOfInterest addObject:@1];
+        newProfile[@"Interest"] = self.arrayOfInterest;
+        // TODO: Adding properties to Profile
         
         
     }
@@ -77,7 +88,7 @@
 -(void)signupUser {
     // initialize a user object
     PFUser *newUser = [PFUser user];
-    
+    self.userID = newUser;
     // set user properties
     newUser.username = self.usernameField.text;
     newUser.password = self.passwordField.text;
