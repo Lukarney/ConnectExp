@@ -49,6 +49,14 @@
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
     NSLog(@"%@", segue.identifier);
+    if([segue.identifier isEqualToString:@"signupSegue"]){
+        UINavigationController *nav = [segue destinationViewController];
+        EditProfileViewController *newuser = (EditProfileViewController *)[nav topViewController];
+        newuser.isNewUser = (Boolean *)TRUE;
+        
+        
+        
+    }
 
 }
 

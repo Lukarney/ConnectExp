@@ -4,11 +4,12 @@
 //
 //  Created by Luke Arney on 7/16/21.
 //
-
-#import "EditProfileViewController.h"
 #import "AppDelegate.h"
-#import <Parse/Parse.h>
+#import "EditProfileViewController.h"
 #import "LoginViewController.h"
+#import "Profile.h"
+#import <Parse/Parse.h>
+
 
 @interface EditProfileViewController ()
 @property (weak, nonatomic) IBOutlet UIButton *imageButton;
@@ -17,7 +18,7 @@
 @property (weak, nonatomic) IBOutlet UITextView *bioField;
 @property (weak, nonatomic) IBOutlet UIButton *updateButton;
 @property (weak,nonatomic) UIImage *uiImageSelected;
-@property (nonatomic) Boolean *isNewUser;
+@property (weak, nonatomic) NSMutableArray *arrayOfInterest;
 
 @end
 
@@ -26,6 +27,33 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    if (!self.isNewUser){
+        [self.updateButton setTitle:@"update info" forState:UIControlStateNormal];
+    }
+    else if(self.isNewUser){
+        [self.updateButton setTitle:@"Create account" forState:UIControlStateNormal];
+    }
+}
+- (IBAction)updateInfoPressed:(id)sender {
+    if (!self.isNewUser){
+        
+        
+    }
+    else if(self.isNewUser){
+        [self signupUser];
+        Profile *newProfile = (Profile *)[PFObject objectWithClassName:@"ConnectExpProfile"];
+        //gets image and saves it
+        NSData *imgData = UIImagePNGRepresentation(self.uiImageSelected);
+        newProfile[@"photo"] = [PFFileObject fileObjectWithName:@"image.png" data:imgData contentType:@"image/png"];
+        newProfile[@"bio"] = self.bioField.text;
+//        newProfile[@"username"] = self.usernameField.text;
+//        self.arrayOfInterest = [NSMutableArray array];
+//        [self.arrayOfInterest addObject:[NSNumber numberWithInt:1]];
+//        newProfile[@"Interest"] = self.arrayOfInterest;
+        
+        
+    }
+    
 }
 - (IBAction)logoutPressed:(id)sender {
     AppDelegate *appDelegate = (AppDelegate *)self.view.window.windowScene.delegate;
@@ -60,9 +88,7 @@
             NSLog(@"Error: %@", error.localizedDescription);
         } else {
             NSLog(@"User registered successfully");
-            
-            // manually segue to logged in view
-            [self performSegueWithIdentifier:@"loginSegue" sender:nil];
+        
         }
     }];
 }
@@ -96,7 +122,7 @@
     // Do something with the images (based on your use case)
     //self.imageButton.currentBackgroundImage = imgResized;
     self.uiImageSelected = imgResized;
-    [self.imageButton.imageView setImage:imgResized];
+    [self.imageButton setBackgroundImage:imgResized forState:UIControlStateNormal];
     
     // Dismiss UIImagePickerController to go back to your original view controller
     [self dismissViewControllerAnimated:YES completion:nil];

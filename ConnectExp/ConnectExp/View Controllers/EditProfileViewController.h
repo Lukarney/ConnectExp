@@ -10,7 +10,7 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface EditProfileViewController : UIViewController
-
+@property (nonatomic) Boolean *isNewUser;
 @end
 
 NS_ASSUME_NONNULL_END
