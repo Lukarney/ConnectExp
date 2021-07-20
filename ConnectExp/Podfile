@@ -6,6 +6,9 @@ target 'ConnectExp' do
   use_frameworks!
 
   # Pods for ConnectExp
+  
+  pod 'AFNetworking'
+  pod 'DateTools'
   pod 'Parse'
 
   target 'ConnectExpTests' do
