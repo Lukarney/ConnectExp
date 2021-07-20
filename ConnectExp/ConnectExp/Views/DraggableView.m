@@ -6,11 +6,12 @@
 //
 
 #define ACTION_MARGIN 120 //%%% distance from center where the action applies. Higher = swipe further in order for the action to be called
-#define SCALE_STRENGTH 4 //%%% how quickly the card shrinks. Higher = slower shrinking
 #define SCALE_MAX .93 //%%% upper bar for how much the card shrinks. Higher = shrinks less
+#define SCALE_STRENGTH 4 //%%% how quickly the card shrinks. Higher = slower shrinking
+#define ROTATION_ANGLE M_PI/8 //%%% Higher = stronger rotation angle
 #define ROTATION_MAX 1 //%%% the maximum rotation allowed in radians.  Higher = card can keep rotating longer
 #define ROTATION_STRENGTH 320 //%%% strength of rotation. Higher = weaker rotation
-#define ROTATION_ANGLE M_PI/8 //%%% Higher = stronger rotation angle
+
 
 #import "DraggableView.h"
 
@@ -20,14 +21,7 @@
 }
 
 @synthesize delegate;
-//- (id)init{
-//    self = [super init];
-//    if (!self) return nil;
-//    //self.panGestureRecognizer = [UIPanGestureRecognizer alloc] initWithTarget:self action:@selector([self addGestureRecognizer:self._panGestureRecognizer]);
-//
-//    [self loadImagePlusStyle];
-//
-//}
+
 - (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
@@ -39,20 +33,14 @@
         self.information.text = @"no info given";
         [self.information setTextAlignment:NSTextAlignmentCenter];
         self.information.textColor = [UIColor blackColor];
-        
         self.backgroundColor = [UIColor whiteColor];
 #warning placeholder stuff, replace with card-specific information }
         
-        
-        
         self.panGestureRecognizer = [[UIPanGestureRecognizer alloc]initWithTarget:self action:@selector(dragged:)];
-        
+        //add gesture recognizer and add subview to the hierarchy
         [self addGestureRecognizer:self.panGestureRecognizer];
         [self addSubview:self.information];
         
-//        overlayView = [[OverlayView alloc]initWithFrame:CGRectMake(self.frame.size.width/2-100, 0, 100, 100)];
-//        overlayView.alpha = 0;
-//        [self addSubview:overlayView];
     }
     return self;
 }
@@ -185,47 +173,5 @@
     NSLog(@"NO");
 }
 
--(void)rightClickAction
-{
-    CGPoint finishPoint = CGPointMake(600, self.center.y);
-    [UIView animateWithDuration:0.3
-                     animations:^{
-                         self.center = finishPoint;
-                         self.transform = CGAffineTransformMakeRotation(1);
-                     }completion:^(BOOL complete){
-                         [self removeFromSuperview];
-                     }];
-    
-    [delegate cardSwipedRight:self];
-    
-    NSLog(@"YES");
-}
-
--(void)leftClickAction
-{
-    CGPoint finishPoint = CGPointMake(-600, self.center.y);
-    [UIView animateWithDuration:0.3
-                     animations:^{
-                         self.center = finishPoint;
-                         self.transform = CGAffineTransformMakeRotation(-1);
-                     }completion:^(BOOL complete){
-                         [self removeFromSuperview];
-                     }];
-    
-    [delegate cardSwipedLeft:self];
-    
-    NSLog(@"NO");
-}
-
--(void)dealloc{
-    [self removeGestureRecognizer:self.panGestureRecognizer];
-}
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect {
-    // Drawing code
-}
-*/
 
 @end

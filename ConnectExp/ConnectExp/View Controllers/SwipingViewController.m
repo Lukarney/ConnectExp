@@ -5,8 +5,11 @@
 //  Created by Luke Arney on 7/12/21.
 //
 
-#import "SwipingViewController.h"
+
 #import "DraggableView.h"
+#import "SwipingViewController.h"
+#import "UIImageView+AFNetworking.h"
+#import <Parse/Parse.h>
 
 @interface SwipingViewController ()
 @property (weak, nonatomic) IBOutlet UIView *card;
