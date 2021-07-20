@@ -7,7 +7,7 @@
 
 #import "MatchesViewController.h"
 
-@interface MatchesViewController ()
+@interface MatchesViewController () <UITableViewDataSource>
 
 @end
 
@@ -19,7 +19,8 @@
 }
 
 /*
- TODO: Declare controller to be UITableViewDataSource
+ TODO: Declare controller to be UITableViewDataSource, did
+ 
  
  TODO: Order Matches by DESC Createdat of last message
  */

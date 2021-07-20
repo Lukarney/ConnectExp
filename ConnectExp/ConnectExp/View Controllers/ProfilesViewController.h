@@ -6,11 +6,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Profile.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface ProfilesViewController : UIViewController
-
+@property (strong, nonatomic) Profile *profile;
 @end
 
 NS_ASSUME_NONNULL_END

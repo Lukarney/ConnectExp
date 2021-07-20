@@ -6,8 +6,15 @@
 //
 
 #import "ProfilesViewController.h"
+#import "Profile.h"
+#import "UIImageView+AFNetworking.h"
+#import <Parse/Parse.h>
 
 @interface ProfilesViewController ()
+@property (weak, nonatomic) IBOutlet UIImageView *profileImage;
+@property (weak, nonatomic) IBOutlet UILabel *profileName;
+@property (weak, nonatomic) IBOutlet UILabel *profileDescription;
+
 @property (strong, nonatomic) NSMutableArray *arrayOfInterest;
 @end
 
@@ -15,7 +22,15 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    // TODO: set up image
+    /*
+    PFFileObject *image = self.profile[@"image"];
+    NSURL *imageURL = [NSURL URLWithString:image.url];
+    [self.profileImage setImageWithURL:imageURL];
+    */
+    //TODO: set up description & user
+    
+    //TODO: set up Interest
 }
 
 /*

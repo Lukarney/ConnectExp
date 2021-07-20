@@ -6,10 +6,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Messages.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface ChatCell : UITableViewCell
+@property (weak, nonatomic) IBOutlet UILabel *authorField;
+@property (weak, nonatomic) IBOutlet UILabel *messageField;
 
 @end
 

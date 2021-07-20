@@ -40,6 +40,7 @@
 - (IBAction)updateInfoPressed:(id)sender {
     if (!self.isNewUser){
         //TODO: Query user and update information
+        NSLog(@"Updated profile");
         
     }
     else if(self.isNewUser){
@@ -61,6 +62,7 @@
         [self.arrayOfInterest addObject:@1];
         newProfile[@"Interest"] = self.arrayOfInterest;
         // TODO: Adding properties to Profile
+        //TODO: Add user to Profile
         
         
     }
@@ -145,22 +147,41 @@
     
     return newImage;
 }
-/*
- TODO: Pick Interest
- 
- TODO: Pick what you're looking for
- 
- 
- */
 
-/*
+//TODO: Pick Interest
+- (IBAction)FoodDrinkPushed:(id)sender {
+    NSLog(@"Food & Drink pressed");
+}
+- (IBAction)musicPushed:(id)sender {
+    NSLog(@"Music pressed");
+}
+- (IBAction)gamesPushed:(id)sender {
+    NSLog(@"Games pressed");
+}
+//TODO: Pick what you're looking for
+- (IBAction)buddyPushed:(id)sender {
+    NSLog(@"Buddy pressed");
+}
+- (IBAction)masterExchangePushed:(id)sender {
+    NSLog(@"Master Exchange pressed");
+}
+- (IBAction)noviceExchangedPushed:(id)sender {
+    NSLog(@"Novice Exchange pressed");
+}
+
+
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
+    NSLog(@"%@", segue.identifier);
+    if([segue.identifier isEqualToString:@"updateInfoSegue"]){
+        
+    }
 }
-*/
+
 
 @end

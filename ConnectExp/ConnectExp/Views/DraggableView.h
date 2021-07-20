@@ -21,9 +21,9 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak) id <DraggableViewDelegate> delegate;
 @property (strong, nonatomic) UIPanGestureRecognizer *panGestureRecognizer;
 @property (strong, nonatomic) UIImageView *profilePicture;
-@property (strong, nonatomic) UILabel *author;
-@property (strong, nonatomic) UILabel *information;
 @property (nonatomic) CGPoint originalPoint;
+@property (weak, nonatomic) IBOutlet UILabel *author;
+@property (weak, nonatomic) IBOutlet UILabel *information;
 
 @end
 
