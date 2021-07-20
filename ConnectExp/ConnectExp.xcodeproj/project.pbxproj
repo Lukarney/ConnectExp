@@ -15,6 +15,7 @@
 		B91D214126A243030053A705 /* ChatCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B91D214026A243030053A705 /* ChatCell.m */; };
 		B91D214426A2447A0053A705 /* Messages.m in Sources */ = {isa = PBXBuildFile; fileRef = B91D214326A2447A0053A705 /* Messages.m */; };
 		B91D214726A6222A0053A705 /* ProfilesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B91D214626A6222A0053A705 /* ProfilesViewController.m */; };
+		B91D214A26A72C090053A705 /* Matches.m in Sources */ = {isa = PBXBuildFile; fileRef = B91D214926A72C090053A705 /* Matches.m */; };
 		B9E5AD32269CB33700E348E3 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B9E5AD31269CB33700E348E3 /* AppDelegate.m */; };
 		B9E5AD35269CB33700E348E3 /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B9E5AD34269CB33700E348E3 /* SceneDelegate.m */; };
 		B9E5AD38269CB33700E348E3 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B9E5AD37269CB33700E348E3 /* ViewController.m */; };
@@ -68,6 +69,8 @@
 		B91D214326A2447A0053A705 /* Messages.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Messages.m; sourceTree = "<group>"; };
 		B91D214526A6222A0053A705 /* ProfilesViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProfilesViewController.h; sourceTree = "<group>"; };
 		B91D214626A6222A0053A705 /* ProfilesViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProfilesViewController.m; sourceTree = "<group>"; };
+		B91D214826A72C090053A705 /* Matches.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Matches.h; sourceTree = "<group>"; };
+		B91D214926A72C090053A705 /* Matches.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Matches.m; sourceTree = "<group>"; };
 		B9E5AD2D269CB33700E348E3 /* ConnectExp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ConnectExp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B9E5AD30269CB33700E348E3 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		B9E5AD31269CB33700E348E3 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -252,6 +255,8 @@
 				B9E5AD72269E194E00E348E3 /* Profile.m */,
 				B91D214226A2447A0053A705 /* Messages.h */,
 				B91D214326A2447A0053A705 /* Messages.m */,
+				B91D214826A72C090053A705 /* Matches.h */,
+				B91D214926A72C090053A705 /* Matches.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -502,6 +507,7 @@
 				B9E5AD6A269CE7B000E348E3 /* SwipingViewController.m in Sources */,
 				B9E5AD70269E002F00E348E3 /* LoginViewController.m in Sources */,
 				B91D213526A1DF420053A705 /* EditProfileViewController.m in Sources */,
+				B91D214A26A72C090053A705 /* Matches.m in Sources */,
 				B9E5AD73269E194E00E348E3 /* Profile.m in Sources */,
 				B9E5AD43269CB33800E348E3 /* main.m in Sources */,
 				B9E5AD35269CB33700E348E3 /* SceneDelegate.m in Sources */,

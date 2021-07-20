@@ -28,13 +28,14 @@
     if (self) {
         [self setupView];
         
-#warning placeholder stuff, replace with card-specific information {
+//placeholder stuff, replace with card-specific information
+//TODO: have card information here and make it pattern with of the 
         self.information = [[UILabel alloc]initWithFrame:CGRectMake(0, 50, self.frame.size.width, 100)];
         self.information.text = @"no info given";
         [self.information setTextAlignment:NSTextAlignmentCenter];
         self.information.textColor = [UIColor blackColor];
         self.backgroundColor = [UIColor whiteColor];
-#warning placeholder stuff, replace with card-specific information }
+// placeholder stuff
         
         self.panGestureRecognizer = [[UIPanGestureRecognizer alloc]initWithTarget:self action:@selector(dragged:)];
         //add gesture recognizer and add subview to the hierarchy
@@ -151,7 +152,7 @@
                      }completion:^(BOOL complete){
                          [self removeFromSuperview];
                      }];
-    
+    //TODO: Implement cardSwipedRight that will provide an action to do after swiping right
     [delegate cardSwipedRight:self];
     
     NSLog(@"YES");
@@ -167,7 +168,7 @@
                      }completion:^(BOOL complete){
                          [self removeFromSuperview];
                      }];
-    
+    //TODO: Implement cardSwipedLeft that will provide an action to do after swiping left
     [delegate cardSwipedLeft:self];
     
     NSLog(@"NO");

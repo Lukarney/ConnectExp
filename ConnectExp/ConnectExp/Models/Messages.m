@@ -9,4 +9,6 @@
 
 @implementation Messages
 
+//TODO: Add @dynaimc, synthesize to provide implementation of arrayOfMessages
+//TODO: Make Data for messages
 @end

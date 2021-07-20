@@ -8,7 +8,7 @@
 #import "ProfilesViewController.h"
 
 @interface ProfilesViewController ()
-
+@property (strong, nonatomic) NSMutableArray *arrayOfInterest;
 @end
 
 @implementation ProfilesViewController
