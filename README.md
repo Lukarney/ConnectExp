@@ -120,26 +120,34 @@ Use mock data to evaluate people. Use distance to help define more people.
 
 
 
+User
 | Property   | Type           | Description |
 | --------   | --------       | -------- |
-| ObjectID   | String.        | unique ID for the post 
+| ObjectID   | String.        | unique ID for the user | 
 | Author.    | Pointer to user     | To hold the data of the user     |
 | image.     | File.          |  image the author puts on the post
 | Description| String         |  text the author puts on his post
 | Created at | DateTime       |  date for when the post is created
-| Location.  | ??             |  Location for knowing proximity of services
-| Requested  | array of users |  To identify what users responded to post
-|
+| Location.  | LatLong            |  Location for knowing proximity of services
+| Matches    | array of users |  To identify what users responded to post
 
-Messages
-| Property   | Type           | Description |
-| --------   | --------       | -------- |
-| ObjectID   | String.        | unique ID for the post 
-| Sender.    | Pointer to user     | To hold the data of the sender     |
-| Reciever.    | Pointer to user     | To hold the data of the Reciever     |
-| image.     | File.          |  image the author puts on the post
-| Text       | String         |  text the author puts on his post
-| Created at | DateTime       |  date for when the post is created
+Message
+| Property   | Type              | Description |
+| --------   | --------          | -------- |
+| ObjectID   | String.           | unique ID for the Message 
+| Sender.    | Pointer to user   | To hold the data of the sender     |
+| Reciever.    | Pointer to user | To hold the data of the Reciever     |
+| image.     | File.             |  image the author puts on the post
+| Text       | String            |  text the author puts on his post
+| Created at | DateTime          |  date for when the post is created |
+
+MessageThread
+| Property   | Type                      | Description |
+| --------   | --------                  | -------- |
+| ObjectID   | String.                   | unique ID for the MessageThread | 
+| Users      | Array of pointers to user | To hold the data of users |
+| Messages   | Array of Messages         |  To hold the data the messages|
+
 
 ## Parse Network Request
 
