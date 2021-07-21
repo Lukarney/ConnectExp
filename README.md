@@ -1,9 +1,12 @@
 # ConnectExp
 ## Table of Contents
 1. [Overview](#Overview)
-1. [Product Spec](#Product-Spec)
-1. [Wireframes](#Wireframes)
-2. [Schema](#Schema)
+2. [Product Spec](#Product-Spec)
+3. [Wireframes](#Wireframes)
+4. [Schema](#Schema)
+5. [Data Models](#Data-Models)
+6. [Ambiguous Problem](#Ambiguous-Problem)
+7. [Milestone Layout](#Milestones)
 
 ## Overview
 ### Description
