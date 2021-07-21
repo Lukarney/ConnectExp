@@ -131,8 +131,8 @@ User
 | image.     | File.          |  image the author puts on the post
 | Description| String         |  text the author puts on his post
 | Created at | DateTime       |  date for when the post is created
-| Location.  | LatLong            |  Location for knowing proximity of services
-| Matches    | array of users |  To identify what users responded to post
+| Location.  | LatLong            |  Location for knowing proximity of services |
+| MessageThreads    | array of MessageThreads |  To hold the data of the user's message threads |
 
 Message
 | Property   | Type              | Description |
