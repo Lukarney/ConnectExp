@@ -1,14 +1,15 @@
 //
-//  Messages.m
+//  Message.m
 //  ConnectExp
 //
-//  Created by Luke Arney on 7/16/21.
+//  Created by Luke Arney on 7/21/21.
 //
 
-#import "Messages.h"
+#import "Message.h"
 
-@implementation Messages
+@implementation Message
 
 //TODO: Add @dynaimc, synthesize to provide implementation of arrayOfMessages
 //TODO: Make Data for messages
+
 @end

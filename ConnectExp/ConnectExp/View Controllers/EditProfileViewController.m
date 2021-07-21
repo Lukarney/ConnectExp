@@ -90,11 +90,10 @@
 -(void)signupUser {
     // initialize a user object
     PFUser *newUser = [PFUser user];
-    self.userID = newUser;
     // set user properties
     newUser.username = self.usernameField.text;
     newUser.password = self.passwordField.text;
-    
+    self.userID = newUser;
     // call sign up function on the object
     [newUser signUpInBackgroundWithBlock:^(BOOL succeeded, NSError * error) {
         if (error != nil) {
@@ -121,7 +120,6 @@
 }
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info {
-    
     // Get the image captured by the UIImagePickerController
     UIImage *originalImage = info[UIImagePickerControllerOriginalImage];
     UIImage *editedImage = info[UIImagePickerControllerEditedImage];
