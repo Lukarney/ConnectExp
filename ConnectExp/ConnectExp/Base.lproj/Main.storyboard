@@ -630,6 +630,7 @@
                         </constraints>
                         <connections>
                             <outlet property="author" destination="RYL-lU-FXZ" id="iDU-lL-C0n"/>
+                            <outlet property="card" destination="Kxb-tQ-ZwN" id="jD0-xJ-vrA"/>
                             <outlet property="information" destination="8I1-Ue-R94" id="Oxf-tJ-CwY"/>
                         </connections>
                     </view>

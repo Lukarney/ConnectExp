@@ -7,6 +7,7 @@
 
 
 #import "DraggableView.h"
+#import "DraggableViewInfo.h"
 #import "SwipingViewController.h"
 #import "UIImageView+AFNetworking.h"
 #import <Parse/Parse.h>
@@ -23,7 +24,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    DraggableView *draggableBackground = [[DraggableView alloc]initWithFrame:self.view.frame];
+    DraggableViewInfo *draggableBackground = [[DraggableViewInfo alloc]initWithFrame:self.view.frame];
     [self.view addSubview:draggableBackground];
 }
 - (IBAction)panCard:(UIPanGestureRecognizer *)sender {

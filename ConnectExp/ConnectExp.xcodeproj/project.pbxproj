@@ -17,6 +17,7 @@
 		B91D214D26A869FB0053A705 /* Message.m in Sources */ = {isa = PBXBuildFile; fileRef = B91D214C26A869FB0053A705 /* Message.m */; };
 		B91D215026A86A5F0053A705 /* MessageThread.m in Sources */ = {isa = PBXBuildFile; fileRef = B91D214F26A86A5F0053A705 /* MessageThread.m */; };
 		B91D215626A9D1630053A705 /* TabBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B91D215526A9D1630053A705 /* TabBarViewController.m */; };
+		B91D215A26AA0C5C0053A705 /* DraggableViewInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = B91D215926AA0C5C0053A705 /* DraggableViewInfo.m */; };
 		B9E5AD32269CB33700E348E3 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B9E5AD31269CB33700E348E3 /* AppDelegate.m */; };
 		B9E5AD35269CB33700E348E3 /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B9E5AD34269CB33700E348E3 /* SceneDelegate.m */; };
 		B9E5AD38269CB33700E348E3 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B9E5AD37269CB33700E348E3 /* ViewController.m */; };
@@ -73,6 +74,8 @@
 		B91D214F26A86A5F0053A705 /* MessageThread.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MessageThread.m; sourceTree = "<group>"; };
 		B91D215426A9D1630053A705 /* TabBarViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TabBarViewController.h; sourceTree = "<group>"; };
 		B91D215526A9D1630053A705 /* TabBarViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TabBarViewController.m; sourceTree = "<group>"; };
+		B91D215826AA0C5C0053A705 /* DraggableViewInfo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DraggableViewInfo.h; sourceTree = "<group>"; };
+		B91D215926AA0C5C0053A705 /* DraggableViewInfo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DraggableViewInfo.m; sourceTree = "<group>"; };
 		B9E5AD2D269CB33700E348E3 /* ConnectExp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ConnectExp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B9E5AD30269CB33700E348E3 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		B9E5AD31269CB33700E348E3 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -225,6 +228,8 @@
 				B91D213D26A242B50053A705 /* MatchCell.m */,
 				B91D213F26A243030053A705 /* ChatCell.h */,
 				B91D214026A243030053A705 /* ChatCell.m */,
+				B91D215826AA0C5C0053A705 /* DraggableViewInfo.h */,
+				B91D215926AA0C5C0053A705 /* DraggableViewInfo.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -510,6 +515,7 @@
 				B91D213526A1DF420053A705 /* EditProfileViewController.m in Sources */,
 				B9E5AD43269CB33800E348E3 /* main.m in Sources */,
 				B9E5AD35269CB33700E348E3 /* SceneDelegate.m in Sources */,
+				B91D215A26AA0C5C0053A705 /* DraggableViewInfo.m in Sources */,
 				B91D215026A86A5F0053A705 /* MessageThread.m in Sources */,
 				B91D214D26A869FB0053A705 /* Message.m in Sources */,
 				B91D213E26A242B50053A705 /* MatchCell.m in Sources */,

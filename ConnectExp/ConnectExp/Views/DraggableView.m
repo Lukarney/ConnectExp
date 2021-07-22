@@ -36,7 +36,8 @@
         self.information.textColor = [UIColor blackColor];
         self.backgroundColor = [UIColor whiteColor];
 // placeholder stuff
-        
+        self.picture = [[UIImageView alloc]initWithFrame:CGRectMake(0, 70, self.frame.size.width, 100)];
+
         self.panGestureRecognizer = [[UIPanGestureRecognizer alloc]initWithTarget:self action:@selector(dragged:)];
         //add gesture recognizer and add subview to the hierarchy
         [self addGestureRecognizer:self.panGestureRecognizer];
