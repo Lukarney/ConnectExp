@@ -4,16 +4,19 @@
 //
 //  Created by Luke Arney on 7/13/21.
 //
-
-#import "LoginViewController.h"
-#import <Parse/Parse.h>
 #import "EditProfileViewController.h"
+#import "LoginViewController.h"
+#import "TabBarViewController.h"
+#import <Parse/Parse.h>
+
+
 
 @interface LoginViewController ()
 @property (weak, nonatomic) IBOutlet UITextField *usernameField;
 @property (weak, nonatomic) IBOutlet UITextField *passwordField;
 @property (weak, nonatomic) IBOutlet UIButton *signupButton;
 @property (weak, nonatomic) IBOutlet UIButton *loginButton;
+@property (weak, nonatomic) PFUser *queriedUser;
 
 @end
 
@@ -31,6 +34,20 @@
 - (IBAction)loginPressed:(id)sender {
     NSString *username = self.usernameField.text;
     NSString *password = self.passwordField.text;
+    PFQuery *query = [PFUser query];
+    [query whereKey:username equalTo:username];
+    [query getFirstObjectInBackgroundWithBlock:^(PFObject *object, NSError *error)
+    {
+        if (!error) {
+           //You found the user!
+           self.queriedUser = (PFUser *)object;
+            NSLog(@"Queried user successfully");
+        }
+        else {
+            NSLog(@"Queried user UNsuccessfully");
+        }
+
+    }];
         
     [PFUser logInWithUsernameInBackground:username password:password block:^(PFUser *user,NSError *error) {
         if (error != nil) {
@@ -53,9 +70,10 @@
         UINavigationController *nav = [segue destinationViewController];
         EditProfileViewController *newuser = (EditProfileViewController *)[nav topViewController];
         newuser.isNewUser = (BOOL *)YES;
-        
-        
-        
+    }
+    else if([segue.identifier isEqualToString:@"loginSegue"]){
+        TabBarViewController *tab = [segue destinationViewController];
+        tab.user = self.queriedUser;
     }
 
 }

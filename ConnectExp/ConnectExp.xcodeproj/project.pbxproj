@@ -16,6 +16,7 @@
 		B91D214726A6222A0053A705 /* ProfilesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B91D214626A6222A0053A705 /* ProfilesViewController.m */; };
 		B91D214D26A869FB0053A705 /* Message.m in Sources */ = {isa = PBXBuildFile; fileRef = B91D214C26A869FB0053A705 /* Message.m */; };
 		B91D215026A86A5F0053A705 /* MessageThread.m in Sources */ = {isa = PBXBuildFile; fileRef = B91D214F26A86A5F0053A705 /* MessageThread.m */; };
+		B91D215626A9D1630053A705 /* TabBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B91D215526A9D1630053A705 /* TabBarViewController.m */; };
 		B9E5AD32269CB33700E348E3 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B9E5AD31269CB33700E348E3 /* AppDelegate.m */; };
 		B9E5AD35269CB33700E348E3 /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B9E5AD34269CB33700E348E3 /* SceneDelegate.m */; };
 		B9E5AD38269CB33700E348E3 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B9E5AD37269CB33700E348E3 /* ViewController.m */; };
@@ -28,7 +29,6 @@
 		B9E5AD6A269CE7B000E348E3 /* SwipingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B9E5AD69269CE7B000E348E3 /* SwipingViewController.m */; };
 		B9E5AD6D269DEF0500E348E3 /* DraggableView.m in Sources */ = {isa = PBXBuildFile; fileRef = B9E5AD6C269DEF0500E348E3 /* DraggableView.m */; };
 		B9E5AD70269E002F00E348E3 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B9E5AD6F269E002F00E348E3 /* LoginViewController.m */; };
-		B9E5AD73269E194E00E348E3 /* Profile.m in Sources */ = {isa = PBXBuildFile; fileRef = B9E5AD72269E194E00E348E3 /* Profile.m */; };
 		C3A7515B936AD9D391D1B68D /* Pods_ConnectExp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C45E6A82FEF891341982F145 /* Pods_ConnectExp.framework */; };
 		EE62999E026F70494EA4F9E5 /* Pods_ConnectExpTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 39D804E54292FCAC428D5FD7 /* Pods_ConnectExpTests.framework */; };
 /* End PBXBuildFile section */
@@ -71,6 +71,8 @@
 		B91D214C26A869FB0053A705 /* Message.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Message.m; sourceTree = "<group>"; };
 		B91D214E26A86A5F0053A705 /* MessageThread.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MessageThread.h; sourceTree = "<group>"; };
 		B91D214F26A86A5F0053A705 /* MessageThread.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MessageThread.m; sourceTree = "<group>"; };
+		B91D215426A9D1630053A705 /* TabBarViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TabBarViewController.h; sourceTree = "<group>"; };
+		B91D215526A9D1630053A705 /* TabBarViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TabBarViewController.m; sourceTree = "<group>"; };
 		B9E5AD2D269CB33700E348E3 /* ConnectExp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ConnectExp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B9E5AD30269CB33700E348E3 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		B9E5AD31269CB33700E348E3 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -95,8 +97,6 @@
 		B9E5AD6C269DEF0500E348E3 /* DraggableView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DraggableView.m; sourceTree = "<group>"; };
 		B9E5AD6E269E002F00E348E3 /* LoginViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		B9E5AD6F269E002F00E348E3 /* LoginViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
-		B9E5AD71269E194E00E348E3 /* Profile.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Profile.h; sourceTree = "<group>"; };
-		B9E5AD72269E194E00E348E3 /* Profile.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Profile.m; sourceTree = "<group>"; };
 		BB646609305E3382EEE4C587 /* Pods-ConnectExp-ConnectExpUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ConnectExp-ConnectExpUITests.release.xcconfig"; path = "Target Support Files/Pods-ConnectExp-ConnectExpUITests/Pods-ConnectExp-ConnectExpUITests.release.xcconfig"; sourceTree = "<group>"; };
 		C1FB74C3502482893FE6F443 /* Pods-ConnectExp-ConnectExpUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ConnectExp-ConnectExpUITests.debug.xcconfig"; path = "Target Support Files/Pods-ConnectExp-ConnectExpUITests/Pods-ConnectExp-ConnectExpUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		C45E6A82FEF891341982F145 /* Pods_ConnectExp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ConnectExp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -244,6 +244,8 @@
 				B91D213A26A241F30053A705 /* MatchesViewController.m */,
 				B91D214526A6222A0053A705 /* ProfilesViewController.h */,
 				B91D214626A6222A0053A705 /* ProfilesViewController.m */,
+				B91D215426A9D1630053A705 /* TabBarViewController.h */,
+				B91D215526A9D1630053A705 /* TabBarViewController.m */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -251,8 +253,6 @@
 		B9E5AD67269CE6BA00E348E3 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				B9E5AD71269E194E00E348E3 /* Profile.h */,
-				B9E5AD72269E194E00E348E3 /* Profile.m */,
 				B91D214B26A869FB0053A705 /* Message.h */,
 				B91D214C26A869FB0053A705 /* Message.m */,
 				B91D214E26A86A5F0053A705 /* MessageThread.h */,
@@ -500,6 +500,7 @@
 			files = (
 				B9E5AD6D269DEF0500E348E3 /* DraggableView.m in Sources */,
 				B91D213B26A241F30053A705 /* MatchesViewController.m in Sources */,
+				B91D215626A9D1630053A705 /* TabBarViewController.m in Sources */,
 				B9E5AD38269CB33700E348E3 /* ViewController.m in Sources */,
 				B91D214726A6222A0053A705 /* ProfilesViewController.m in Sources */,
 				B91D213826A241E10053A705 /* ChatViewController.m in Sources */,
@@ -507,7 +508,6 @@
 				B9E5AD6A269CE7B000E348E3 /* SwipingViewController.m in Sources */,
 				B9E5AD70269E002F00E348E3 /* LoginViewController.m in Sources */,
 				B91D213526A1DF420053A705 /* EditProfileViewController.m in Sources */,
-				B9E5AD73269E194E00E348E3 /* Profile.m in Sources */,
 				B9E5AD43269CB33800E348E3 /* main.m in Sources */,
 				B9E5AD35269CB33700E348E3 /* SceneDelegate.m in Sources */,
 				B91D215026A86A5F0053A705 /* MessageThread.m in Sources */,

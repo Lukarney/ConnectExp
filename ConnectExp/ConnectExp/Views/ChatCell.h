@@ -6,7 +6,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "Messages.h"
+#import "Message.h"
 
 NS_ASSUME_NONNULL_BEGIN
 

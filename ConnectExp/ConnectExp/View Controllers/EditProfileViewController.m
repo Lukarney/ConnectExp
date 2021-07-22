@@ -7,7 +7,6 @@
 #import "AppDelegate.h"
 #import "EditProfileViewController.h"
 #import "LoginViewController.h"
-#import "Profile.h"
 #import <Parse/Parse.h>
 
 
@@ -19,7 +18,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *updateButton;
 @property (weak, nonatomic) IBOutlet UINavigationItem *navigationTitle;
 @property (weak, nonatomic) UIImage *uiImageSelected;
-@property (weak, nonatomic) PFUser *userID;
+@property (weak, nonatomic) PFUser *userPointer;
 @property (strong, nonatomic) NSMutableArray *arrayOfInterest;
 @end
 
@@ -44,58 +43,38 @@
         
     }
     else if(self.isNewUser){
-        Profile *newProfile = (Profile *)[PFObject objectWithClassName:@"ConnectExpProfile"];
         [self signupUser];
-        //gets image and saves it
-        if( self.uiImageSelected !=nil){
-            NSData *imgData = UIImagePNGRepresentation(self.uiImageSelected);
-            newProfile[@"photo"] = [PFFileObject fileObjectWithName:@"image.png" data:imgData contentType:@"image/png"];
-        }
-        else{
-            NSData *imgData = UIImagePNGRepresentation(self.imageButton.currentBackgroundImage);
-            newProfile[@"photo"] = [PFFileObject fileObjectWithName:@"image.png" data:imgData contentType:@"image/png"];
-        }
-        
-        newProfile[@"bio"] = self.bioField.text;
-        newProfile[@"username"] = self.usernameField.text;
-        self.arrayOfInterest = [[NSMutableArray array] init];
-        [self.arrayOfInterest addObject:@1];
-        newProfile[@"Interest"] = self.arrayOfInterest;
-        // TODO: Adding properties to Profile
-        //TODO: Add user to Profile
-        
-        
     }
     
 }
-- (IBAction)logoutPressed:(id)sender {
-    AppDelegate *appDelegate = (AppDelegate *)self.view.window.windowScene.delegate;
 
-    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    LoginViewController *loginViewController = [storyboard instantiateViewControllerWithIdentifier:@"loginViewController"];
-    appDelegate.window.rootViewController = loginViewController;
-    
-    [PFUser logOutInBackgroundWithBlock:^(NSError * _Nullable error) {
-        if(error != nil){
-            NSLog(@"User log out failed: %@", error.localizedDescription);
-        }
-        else {
-            NSLog(@"Logged out successfully");
-            [self dismissViewControllerAnimated:YES completion:nil];
-        }
-        
-    }];
-}
 
 -(void)signupUser {
     // initialize a user object
-    PFUser *newUser = [PFUser user];
+    PFUser *newPFUser = [PFUser user];
     // set user properties
-    newUser.username = self.usernameField.text;
-    newUser.password = self.passwordField.text;
-    self.userID = newUser;
+    newPFUser.username = self.usernameField.text;
+    newPFUser.password = self.passwordField.text;
+    self.userPointer = newPFUser;
+    if( self.uiImageSelected !=nil){
+        NSData *imgData = UIImagePNGRepresentation(self.uiImageSelected);
+        newPFUser[@"image"] = [PFFileObject fileObjectWithName:@"image.png" data:imgData contentType:@"image/png"];
+    }
+    else{
+        NSData *imgData = UIImagePNGRepresentation(self.imageButton.currentBackgroundImage);
+        newPFUser[@"image"] = [PFFileObject fileObjectWithName:@"image.png" data:imgData contentType:@"image/png"];
+    }
+    newPFUser[@"description"] = self.bioField.text;
+    newPFUser[@"username"] = self.usernameField.text;
+    self.arrayOfInterest = [[NSMutableArray array] init];
+    [self.arrayOfInterest addObject:@1];
+    newPFUser[@"interests"] = self.arrayOfInterest;
+    newPFUser[@"matches"] = [[NSMutableArray array] init];
+    // TODO: Adding properties to Profile
+    //TODO: Add user to Profile
+    NSLog(@"%@", newPFUser);
     // call sign up function on the object
-    [newUser signUpInBackgroundWithBlock:^(BOOL succeeded, NSError * error) {
+    [newPFUser signUpInBackgroundWithBlock:^(BOOL succeeded, NSError * error) {
         if (error != nil) {
             NSLog(@"Error: %@", error.localizedDescription);
         } else {
