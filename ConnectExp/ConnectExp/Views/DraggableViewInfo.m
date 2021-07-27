@@ -8,6 +8,7 @@
 #import "DraggableViewInfo.h"
 #import "UIImageView+AFNetworking.h"
 #import <Parse/Parse.h>
+
 @implementation DraggableViewInfo{
     NSInteger cardsLoadedIndex; //%%% the index of the card you have loaded into the loadedCards array last
     NSMutableArray *loadedCards; //%%% the array of card loaded (change max_buffer_size to increase or decrease the number of cards this holds)
@@ -35,7 +36,20 @@ static const float CARD_WIDTH = 290; //%%% width of the draggable card
         [super layoutSubviews];
         [self setupView];
         self.exampleCardLabels = [[NSMutableArray alloc] init];
-
+        PFUser *currentUser = [PFUser currentUser];
+        if (currentUser) {
+          // do stuff with the user
+            self.arrayOfMatches = [[NSMutableArray alloc] init];
+            NSLog(@"got current user");
+//            if ([currentUser[@"matches"] count] > 0){
+//                self.arrayOfMatches = currentUser[@"matches"];
+//                NSLog(@"array at the beg: %@", self.arrayOfMatches);
+//            }
+        }
+        else{
+            NSLog(@"Did not get user");
+            
+        }
         PFQuery *query = [PFUser query];
         [query includeKey:@"username"];
         // fetch data asynchronously
@@ -86,7 +100,8 @@ static const float CARD_WIDTH = 290; //%%% width of the draggable card
 {
     DraggableView *draggableView = [[DraggableView alloc]initWithFrame:CGRectMake((self.frame.size.width - CARD_WIDTH)/2, (self.frame.size.height - CARD_HEIGHT)/2, CARD_WIDTH, CARD_HEIGHT)];
     PFUser *user = self.exampleCardLabels[index];
-    draggableView.information.text = user[@"username"]; //%%% placeholder for card-specific information
+    draggableView.userPointer = user;
+    draggableView.information.text = user[@"username"];
     if(user[@"image"] != nil){
         PFFileObject *image = user[@"image"];
         NSURL *imageURL = [NSURL URLWithString:image.url];
@@ -152,9 +167,54 @@ static const float CARD_WIDTH = 290; //%%% width of the draggable card
 -(void)cardSwipedRight:(UIView *)card
 {
     //do whatever you want with the card that was swiped
-    //    DraggableView *c = (DraggableView *)card;
+//    DraggableView *c = (DraggableView *)card;
+    DraggableView *currentCard = [loadedCards objectAtIndex:0];
+    PFUser *currentUser = [PFUser currentUser];
+    PFUser *matchedUser = currentCard.userPointer;
+    NSLog(@"loaded card user: %@", matchedUser);
+    NSLog(@"loaded card now: %@", [loadedCards objectAtIndex:0]);
+    NSLog(@"current User: %@", currentUser);
+    NSLog(@"current matches: %@", self.arrayOfMatches);
+    if (!([currentUser[@"matches"] containsObject:matchedUser]) &&
+        !([matchedUser.objectId isEqual:currentUser.objectId])){
+        //add new match to current user
+        [self.arrayOfMatches addObject:matchedUser];
+        if (currentUser) {
+            //save matches
+            currentUser[@"matches"] = self.arrayOfMatches;
+            NSLog(@"updated user: %@", currentUser);
+            [currentUser saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+                if (succeeded) {
+                    NSLog(@"PFUser updated successfully");
+                }
+                else {
+                    NSLog(@"Update Failed. Error: %@", error.localizedDescription);
+                }
+            }];
+            //create a message thread
+            PFObject *messageThread = [PFObject objectWithClassName:@"MessageThread"];
+            NSMutableArray *matchedUsers = [[NSMutableArray alloc] init];
+            [matchedUsers addObject:currentUser];
+            [matchedUsers addObject:matchedUser];
+            messageThread[@"users"] = matchedUsers;
+            messageThread[@"messages"] = [[NSMutableArray alloc] init];
+            [messageThread saveInBackgroundWithBlock:^(BOOL succeeded, NSError * error) {
+                if (succeeded) {
+                    NSLog(@"The messageThread was saved!");
+                } else {
+                    NSLog(@"Problem saving messageThread: %@", error.localizedDescription);
+                }
+            }];
+        }
+        else {
+            NSLog(@"User did not add matched user");
+        }
+        
+    }
     
+    //[PFUser.currentUser addObject:<#(nonnull id)#> forKey:<#(nonnull NSString *)#>];
     [loadedCards removeObjectAtIndex:0]; //%%% card was swiped, so it's no longer a "loaded card"
+    
     
     if (cardsLoadedIndex < [allCards count]) { //%%% if we haven't reached the end of all cards, put another into the loaded cards
         [loadedCards addObject:[allCards objectAtIndex:cardsLoadedIndex]];

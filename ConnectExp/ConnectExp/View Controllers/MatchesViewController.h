@@ -10,7 +10,7 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface MatchesViewController : UIViewController
-@property (strong, nonatomic) PFUser *user;
+@property (strong, nonatomic) NSMutableArray *matches;
 @end
 
 NS_ASSUME_NONNULL_END

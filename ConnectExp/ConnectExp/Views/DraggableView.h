@@ -26,6 +26,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic,strong)UILabel *information;
 @property (nonatomic, strong) UIImageView *picture;
 @property (nonatomic,strong)UILabel *author;
+@property (nonatomic, strong) PFUser *userPointer;
 @property (weak, nonatomic) IBOutlet UILabel *name;
 @property (weak, nonatomic) IBOutlet UILabel *cardInformation;
 @property (weak, nonatomic) IBOutlet DraggableView *card;

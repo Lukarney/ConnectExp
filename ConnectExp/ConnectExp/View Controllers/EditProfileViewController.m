@@ -18,8 +18,9 @@
 @property (weak, nonatomic) IBOutlet UIButton *updateButton;
 @property (weak, nonatomic) IBOutlet UINavigationItem *navigationTitle;
 @property (weak, nonatomic) UIImage *uiImageSelected;
-@property (weak, nonatomic) PFUser *userPointer;
+@property (weak, nonatomic) PFUser *user;
 @property (strong, nonatomic) NSMutableArray *arrayOfInterest;
+@property (strong, nonatomic) NSMutableArray *arrayOfMatches;
 @end
 
 @implementation EditProfileViewController
@@ -30,16 +31,50 @@
     if (!self.isNewUser){
         [self.updateButton setTitle:@"update info" forState:UIControlStateNormal];
         [self.navigationTitle setTitle:@"Edit Profile"];
+        self.user = PFUser.currentUser;
+        self.usernameField.text = self.user.username;
+        self.passwordField.text = self.user.password;
+        //see if description is nil
+        if (self.user[@"description"] != nil ){
+            self.bioField.text = self.user[@"description"];
+        }
+        //see if picture is nil
+        if (self.user[@"image"] != nil ){
+            PFFileObject *imageObject = self.user[@"image"];
+            NSURL *imageURL = [NSURL URLWithString:imageObject.url];
+            UIImage *imageFromURL = [UIImage imageWithData: [NSData dataWithContentsOfURL:imageURL]];
+            CGSize imgSize = CGSizeMake(150, 150);
+            UIImage *imgResized = [self resizeImage:imageFromURL withSize:imgSize];
+            self.uiImageSelected = imgResized;
+            [self.imageButton setBackgroundImage:self.uiImageSelected forState:UIControlStateNormal];
+        }
+        //see if matches is nil
+        if (self.user[@"matches"] != nil){
+            self.arrayOfMatches = self.user[@"matches"];
+        }
+        else {
+            self.arrayOfMatches = [[NSMutableArray array] init];
+        }
+        //see if interests is nil
+        if (self.user[@"interests"] != nil){
+            self.arrayOfInterest = self.user[@"interests"];
+        }
+        else {
+            self.arrayOfInterest = [[NSMutableArray array] init];
+        }
     }
     else if(self.isNewUser){
         [self.updateButton setTitle:@"Create account" forState:UIControlStateNormal];
         [self.navigationTitle setTitle:@"Registration"];
+        self.arrayOfInterest = [[NSMutableArray array] init];
+        self.arrayOfMatches = [[NSMutableArray array] init];
     }
 }
 - (IBAction)updateInfoPressed:(id)sender {
     if (!self.isNewUser){
         //TODO: Query user and update information
         NSLog(@"Updated profile");
+        [self updateUser];
         
     }
     else if(self.isNewUser){
@@ -49,16 +84,17 @@
 }
 
 
--(void)signupUser {
+- (void)signupUser {
     // initialize a user object
     PFUser *newPFUser = [PFUser user];
     // set user properties
     newPFUser.username = self.usernameField.text;
     newPFUser.password = self.passwordField.text;
-    self.userPointer = newPFUser;
+    self.user = newPFUser;
     if( self.uiImageSelected !=nil){
         NSData *imgData = UIImagePNGRepresentation(self.uiImageSelected);
         newPFUser[@"image"] = [PFFileObject fileObjectWithName:@"image.png" data:imgData contentType:@"image/png"];
+        
     }
     else{
         NSData *imgData = UIImagePNGRepresentation(self.imageButton.currentBackgroundImage);
@@ -66,12 +102,10 @@
     }
     newPFUser[@"description"] = self.bioField.text;
     newPFUser[@"username"] = self.usernameField.text;
-    self.arrayOfInterest = [[NSMutableArray array] init];
     [self.arrayOfInterest addObject:@1];
     newPFUser[@"interests"] = self.arrayOfInterest;
-    newPFUser[@"matches"] = [[NSMutableArray array] init];
+    newPFUser[@"matches"] = self.arrayOfMatches;
     // TODO: Adding properties to Profile
-    //TODO: Add user to Profile
     NSLog(@"%@", newPFUser);
     // call sign up function on the object
     [newPFUser signUpInBackgroundWithBlock:^(BOOL succeeded, NSError * error) {
@@ -81,6 +115,32 @@
             NSLog(@"User registered successfully");
         }
     }];
+}
+
+- (void)updateUser {
+    PFUser *currentUser = [PFUser currentUser];
+    if (currentUser) {
+        currentUser.username = self.usernameField.text;
+        currentUser.password = self.passwordField.text;
+        currentUser[@"description"] = self.bioField.text;
+        currentUser[@"interests"] = self.arrayOfInterest;
+        currentUser[@"matches"] = self.arrayOfMatches;
+        if( self.uiImageSelected !=nil){
+            NSData *imgData = UIImagePNGRepresentation(self.uiImageSelected);
+            currentUser[@"image"] = [PFFileObject fileObjectWithName:@"image.png" data:imgData contentType:@"image/png"];
+        }
+        else{
+            NSData *imgData = UIImagePNGRepresentation(self.imageButton.currentBackgroundImage);
+            currentUser[@"image"] = [PFFileObject fileObjectWithName:@"image.png" data:imgData contentType:@"image/png"];
+        }
+      [currentUser saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+        if (succeeded) {
+            NSLog(@"User updated successfully");
+        } else {
+            NSLog(@"Error: %@", error.localizedDescription);
+        }
+      }];
+    }
 }
 
 - (IBAction)imagePressed:(id)sender {

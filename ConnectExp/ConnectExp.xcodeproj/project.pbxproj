@@ -6,6 +6,20 @@
 	objectVersion = 51;
 	objects = {
 
+/* Begin PBXAggregateTarget section */
+		B91D215B26AB14080053A705 /* OCLint */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = B91D215C26AB14080053A705 /* Build configuration list for PBXAggregateTarget "OCLint" */;
+			buildPhases = (
+				B91D215F26AB144D0053A705 /* ShellScript */,
+			);
+			dependencies = (
+			);
+			name = OCLint;
+			productName = OCLint;
+		};
+/* End PBXAggregateTarget section */
+
 /* Begin PBXBuildFile section */
 		552109578F7E43475CAB626E /* Pods_ConnectExp_ConnectExpUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E0529CC36B74606E2919FDB4 /* Pods_ConnectExp_ConnectExpUITests.framework */; };
 		B91D213526A1DF420053A705 /* EditProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B91D213426A1DF420053A705 /* EditProfileViewController.m */; };
@@ -335,6 +349,9 @@
 			attributes = {
 				LastUpgradeCheck = 1250;
 				TargetAttributes = {
+					B91D215B26AB14080053A705 = {
+						CreatedOnToolsVersion = 12.5.1;
+					};
 					B9E5AD2C269CB33700E348E3 = {
 						CreatedOnToolsVersion = 12.5.1;
 					};
@@ -364,6 +381,7 @@
 				B9E5AD2C269CB33700E348E3 /* ConnectExp */,
 				B9E5AD47269CB33900E348E3 /* ConnectExpTests */,
 				B9E5AD52269CB33900E348E3 /* ConnectExpUITests */,
+				B91D215B26AB14080053A705 /* OCLint */,
 			);
 		};
 /* End PBXProject section */
@@ -479,6 +497,23 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		B91D215F26AB144D0053A705 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "source ~/.bash_profile\ncd ${SRCROOT}\nxcodebuild clean\nxcodebuild | xcpretty -r json-compilation-database\noclint-json-compilation-database -- -report-type xcode\n";
+		};
 		D67E86F89482F3F2EFC03CCA /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -574,6 +609,24 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		B91D215D26AB14080053A705 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 6LTKB7ZMQV;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		B91D215E26AB14080053A705 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 6LTKB7ZMQV;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 		B9E5AD5A269CB33900E348E3 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -807,6 +860,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		B91D215C26AB14080053A705 /* Build configuration list for PBXAggregateTarget "OCLint" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B91D215D26AB14080053A705 /* Debug */,
+				B91D215E26AB14080053A705 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		B9E5AD28269CB33700E348E3 /* Build configuration list for PBXProject "ConnectExp" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

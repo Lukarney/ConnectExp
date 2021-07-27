@@ -25,6 +25,7 @@
     }];
 
     [Parse initializeWithConfiguration:config];
+    //configure Messages
 
     return YES;
 }

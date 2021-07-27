@@ -7,10 +7,11 @@
 #import "ChatViewController.h"
 #import <Parse/Parse.h>
 
-@interface ChatViewController () <UITableViewDataSource>
+@interface ChatViewController () <UITableViewDelegate, UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UITextField *inputField;
-@property (weak, nonatomic) PFUser *sender;
-@property (weak, nonatomic) PFUser *receiver;
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (weak, nonatomic) PFUser *userSelf;
+@property (weak, nonatomic) PFUser *userOther;
 
 @end
 
@@ -19,6 +20,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    self.tableView.delegate = self;
+    self.tableView.dataSource = self;
 }
 /*
  TODO: In segue send in PFUser for the sender and receiver
