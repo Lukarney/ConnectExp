@@ -48,18 +48,22 @@ Use mock data to evaluate people. Use distance to help define more people.
 **Required Must-have Stories**
 
 * User can view feed
-* User can request to connect
 * user can create an account
 * user can login
-* users can be on the feed
+* user can swipe on feed to match
+* user can match with another user
+* user can see matches
+* user can view & edit own profile
+* user can message matches
 
 
 **Optional Nice-to-have Stories**
 
 * user can tap on photos for a detailed view
-* user can view profile
-* user can message
-* User can match with another user
+* user can see reviews
+* user can find people based on requirements
+    * user can find people based on location specs
+* user can see similar people
 
 ### 2. Screen Archetypes
 
@@ -123,16 +127,18 @@ Use mock data to evaluate people. Use distance to help define more people.
 
 
 
-User
-| Property   | Type           | Description |
-| --------   | --------       | -------- |
-| ObjectID   | String.        | unique ID for the user | 
-| Author.    | Pointer to user     | To hold the data of the user     |
-| image.     | File.          |  image the author puts on the post
-| Description| String         |  text the author puts on his post
-| Created at | DateTime       |  date for when the post is created
-| Location.  | LatLong            |  Location for knowing proximity of services |
-| MessageThreads    | array of MessageThreads |  To hold the data of the user's message threads |
+PFUser
+| Property    | Type               | Description |
+| --------    | --------           | -------- |
+| ObjectID    | String.            | unique ID for the user | 
+| username.   | String           | To hold the data of the user     |
+| password.   | String           | To hold the data of the user     |
+| image.      | File.              |  image the author puts on the post
+| Description | String             |  text the author puts on his post
+| Created at  | DateTime           |  date for when the post is created
+| Location.   | LatLong            |  Location for knowing proximity of services
+| Matches     | array of users     |  Holds the data of matched users|
+| Interest    | array of interest |  To hold the data of user's interests |
 
 Message
 | Property   | Type              | Description |
