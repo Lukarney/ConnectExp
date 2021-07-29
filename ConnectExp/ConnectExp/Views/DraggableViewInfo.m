@@ -175,6 +175,7 @@ static const float CARD_WIDTH = 290; //%%% width of the draggable card
     NSLog(@"loaded card now: %@", [loadedCards objectAtIndex:0]);
     NSLog(@"current User: %@", currentUser);
     NSLog(@"current matches: %@", self.arrayOfMatches);
+    //add matched user to matched list of current user
     if (!([currentUser[@"matches"] containsObject:matchedUser]) &&
         !([matchedUser.objectId isEqual:currentUser.objectId])){
         //add new match to current user
@@ -191,7 +192,7 @@ static const float CARD_WIDTH = 290; //%%% width of the draggable card
                     NSLog(@"Update Failed. Error: %@", error.localizedDescription);
                 }
             }];
-            //create a message thread
+            //create a message thread for new match
             PFObject *messageThread = [PFObject objectWithClassName:@"MessageThread"];
             NSMutableArray *matchedUsers = [[NSMutableArray alloc] init];
             [matchedUsers addObject:currentUser];
@@ -222,6 +223,41 @@ static const float CARD_WIDTH = 290; //%%% width of the draggable card
         [self insertSubview:[loadedCards objectAtIndex:(MAX_BUFFER_SIZE-1)] belowSubview:[loadedCards objectAtIndex:(MAX_BUFFER_SIZE-2)]];
     }
 
+}
+- (NSMutableDictionary *)getMatchesV1:(NSInteger *)N
+                     listOfIds:(NSMutableArray *)M
+          InterestInDictionary:(NSMutableDictionary *)IID
+{
+    NSMutableDictionary *res = [[NSMutableDictionary alloc] init];
+    for (id key in IID)
+    {
+        IID[key] = [NSMutableSet setWithArray:IID[key]];
+        res[key] = [[NSMutableArray alloc] init];
+    }
+    for (NSInteger *i = 0; i < N; i++ )
+    {
+        NSInteger *interestLengthOfI = [IID[(id *)i] count];
+        for (NSInteger *j = i+1; i < N; i++)
+        {
+            NSInteger *interestLengthOfJ = [IID[(id *)j] count];
+            NSInteger *count = 0;
+            for (NSString *interest in IID[i])
+            {
+                if (interest in IID[j])
+                {
+                    count += 1;
+                }
+            }
+            [res[i] addObject:@(j,count/interestLengthOfI)];
+            [res[j] addObject:@(i,count/interestLengthOfJ)];
+        }
+    }
+    for (id key in res)
+    {
+        //find out how to sort by the number
+        res[key] = [res[key] sortedArray]
+    }
+        
 }
 
 //%%% when you hit the right button, this is called and substitutes the swipe

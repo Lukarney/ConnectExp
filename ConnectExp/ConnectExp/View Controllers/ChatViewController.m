@@ -10,8 +10,7 @@
 @interface ChatViewController () <UITableViewDelegate, UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UITextField *inputField;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
-@property (weak, nonatomic) PFUser *userSelf;
-@property (weak, nonatomic) PFUser *userOther;
+
 
 @end
 
@@ -33,7 +32,7 @@
  TODO: Order chats by DESC Createdat
  */
 - (IBAction)sendPressed:(id)sender {
-    PFObject *chatMessage = [PFObject objectWithClassName:@"Message_ConnectExp"];
+    PFObject *chatMessage = [PFObject objectWithClassName:@"Message"];
     chatMessage[@"text"] = self.inputField.text;
     //save in background
     [chatMessage saveInBackgroundWithBlock:^(BOOL succeeded, NSError * error) {

@@ -158,7 +158,8 @@
     [self presentViewController:imagePickerVC animated:YES completion:nil];
 }
 
-- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info {
+- (void)imagePickerController:(UIImagePickerController *)picker
+didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info {
     // Get the image captured by the UIImagePickerController
     UIImage *originalImage = info[UIImagePickerControllerOriginalImage];
     UIImage *editedImage = info[UIImagePickerControllerEditedImage];
@@ -173,7 +174,8 @@
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
-- (UIImage *)resizeImage:(UIImage *)image withSize:(CGSize)size {
+- (UIImage *)resizeImage:(UIImage *)image
+                withSize:(CGSize)size {
     UIImageView *resizeImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, size.width, size.height)];
     resizeImageView.contentMode = UIViewContentModeScaleAspectFill;
     resizeImageView.image = image;
