@@ -234,10 +234,10 @@ static const float CARD_WIDTH = 290; //%%% width of the draggable card
         IID[key] = [NSMutableSet setWithArray:IID[key]];
         res[key] = [[NSMutableArray alloc] init];
     }
-    for (NSInteger *i = 0; i < N; i++ )
+    for (NSInteger i = 0; i < N; i++ )
     {
         NSInteger *interestLengthOfI = [IID[(id *)i] count];
-        for (NSInteger *j = i+1; i < N; i++)
+        for (NSInteger j = i+1; i < N; i++)
         {
             NSInteger *interestLengthOfJ = [IID[(id *)j] count];
             NSInteger *count = 0;
@@ -257,6 +257,7 @@ static const float CARD_WIDTH = 290; //%%% width of the draggable card
         //find out how to sort by the number
         res[key] = [res[key] sortedArray]
     }
+    return res;
         
 }
 
