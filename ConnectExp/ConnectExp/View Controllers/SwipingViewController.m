@@ -5,7 +5,6 @@
 //  Created by Luke Arney on 7/12/21.
 //
 
-
 #import "DraggableView.h"
 #import "DraggableViewInfo.h"
 #import "SwipingViewController.h"
@@ -26,9 +25,6 @@
     // Do any additional setup after loading the view.
     DraggableViewInfo *draggableBackground = [[DraggableViewInfo alloc]initWithFrame:self.view.frame];
     [self.view addSubview:draggableBackground];
-}
-- (IBAction)panCard:(UIPanGestureRecognizer *)sender {
-    
 }
 
 

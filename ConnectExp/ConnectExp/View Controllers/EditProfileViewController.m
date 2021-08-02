@@ -9,8 +9,8 @@
 #import "LoginViewController.h"
 #import <Parse/Parse.h>
 
-
 @interface EditProfileViewController ()
+
 @property (weak, nonatomic) IBOutlet UIButton *imageButton;
 @property (weak, nonatomic) IBOutlet UITextField *usernameField;
 @property (weak, nonatomic) IBOutlet UITextField *passwordField;
@@ -21,25 +21,25 @@
 @property (weak, nonatomic) PFUser *user;
 @property (strong, nonatomic) NSMutableArray *arrayOfInterest;
 @property (strong, nonatomic) NSMutableArray *arrayOfMatches;
+
 @end
 
 @implementation EditProfileViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
     if (!self.isNewUser){
         [self.updateButton setTitle:@"update info" forState:UIControlStateNormal];
         [self.navigationTitle setTitle:@"Edit Profile"];
         self.user = PFUser.currentUser;
         self.usernameField.text = self.user.username;
         self.passwordField.text = self.user.password;
-        //see if description is nil
-        if (self.user[@"description"] != nil ){
+        // See if description is nil
+        if (self.user[@"description"] != nil) {
             self.bioField.text = self.user[@"description"];
         }
-        //see if picture is nil
-        if (self.user[@"image"] != nil ){
+        // See if picture is nil
+        if (self.user[@"image"] != nil) {
             PFFileObject *imageObject = self.user[@"image"];
             NSURL *imageURL = [NSURL URLWithString:imageObject.url];
             UIImage *imageFromURL = [UIImage imageWithData: [NSData dataWithContentsOfURL:imageURL]];
@@ -48,55 +48,47 @@
             self.uiImageSelected = imgResized;
             [self.imageButton setBackgroundImage:self.uiImageSelected forState:UIControlStateNormal];
         }
-        //see if matches is nil
-        if (self.user[@"matches"] != nil){
+        // See if matches is nil
+        if (self.user[@"matches"] != nil) {
             self.arrayOfMatches = self.user[@"matches"];
-        }
-        else {
+        } else {
             self.arrayOfMatches = [[NSMutableArray array] init];
         }
-        //see if interests is nil
-        if (self.user[@"interests"] != nil){
+        // See if interests is nil
+        if (self.user[@"interests"] != nil) {
             self.arrayOfInterest = self.user[@"interests"];
-        }
-        else {
+        } else {
             self.arrayOfInterest = [[NSMutableArray array] init];
         }
-    }
-    else if(self.isNewUser){
+    } else if(self.isNewUser) {
         [self.updateButton setTitle:@"Create account" forState:UIControlStateNormal];
         [self.navigationTitle setTitle:@"Registration"];
         self.arrayOfInterest = [[NSMutableArray array] init];
         self.arrayOfMatches = [[NSMutableArray array] init];
     }
 }
+
 - (IBAction)updateInfoPressed:(id)sender {
-    if (!self.isNewUser){
+    if (!self.isNewUser) {
         //TODO: Query user and update information
         NSLog(@"Updated profile");
         [self updateUser];
-        
-    }
-    else if(self.isNewUser){
+    } else if(self.isNewUser){
         [self signupUser];
     }
-    
 }
 
-
 - (void)signupUser {
-    // initialize a user object
+    // Initialize a user object
     PFUser *newPFUser = [PFUser user];
-    // set user properties
+    // Set user properties
     newPFUser.username = self.usernameField.text;
     newPFUser.password = self.passwordField.text;
     self.user = newPFUser;
-    if( self.uiImageSelected !=nil){
+    if (self.uiImageSelected != nil) {
         NSData *imgData = UIImagePNGRepresentation(self.uiImageSelected);
         newPFUser[@"image"] = [PFFileObject fileObjectWithName:@"image.png" data:imgData contentType:@"image/png"];
-        
-    }
-    else{
+    } else{
         NSData *imgData = UIImagePNGRepresentation(self.imageButton.currentBackgroundImage);
         newPFUser[@"image"] = [PFFileObject fileObjectWithName:@"image.png" data:imgData contentType:@"image/png"];
     }
@@ -105,9 +97,8 @@
     [self.arrayOfInterest addObject:@1];
     newPFUser[@"interests"] = self.arrayOfInterest;
     newPFUser[@"matches"] = self.arrayOfMatches;
-    // TODO: Adding properties to Profile
     NSLog(@"%@", newPFUser);
-    // call sign up function on the object
+    // Call sign up function on the object
     [newPFUser signUpInBackgroundWithBlock:^(BOOL succeeded, NSError * error) {
         if (error != nil) {
             NSLog(@"Error: %@", error.localizedDescription);
@@ -125,21 +116,21 @@
         currentUser[@"description"] = self.bioField.text;
         currentUser[@"interests"] = self.arrayOfInterest;
         currentUser[@"matches"] = self.arrayOfMatches;
-        if( self.uiImageSelected !=nil){
+        if (self.uiImageSelected !=nil) {
             NSData *imgData = UIImagePNGRepresentation(self.uiImageSelected);
             currentUser[@"image"] = [PFFileObject fileObjectWithName:@"image.png" data:imgData contentType:@"image/png"];
         }
-        else{
+        else {
             NSData *imgData = UIImagePNGRepresentation(self.imageButton.currentBackgroundImage);
             currentUser[@"image"] = [PFFileObject fileObjectWithName:@"image.png" data:imgData contentType:@"image/png"];
         }
-      [currentUser saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-        if (succeeded) {
+        [currentUser saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+            if (succeeded) {
             NSLog(@"User updated successfully");
-        } else {
+            } else {
             NSLog(@"Error: %@", error.localizedDescription);
-        }
-      }];
+            }
+        }];
     }
 }
 
@@ -188,39 +179,17 @@ didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info {
 }
 
 //TODO: Pick Interest
+
 - (IBAction)FoodDrinkPushed:(id)sender {
     NSLog(@"Food & Drink pressed");
 }
+
 - (IBAction)musicPushed:(id)sender {
     NSLog(@"Music pressed");
 }
+
 - (IBAction)gamesPushed:(id)sender {
     NSLog(@"Games pressed");
 }
-//TODO: Pick what you're looking for
-- (IBAction)buddyPushed:(id)sender {
-    NSLog(@"Buddy pressed");
-}
-- (IBAction)masterExchangePushed:(id)sender {
-    NSLog(@"Master Exchange pressed");
-}
-- (IBAction)noviceExchangedPushed:(id)sender {
-    NSLog(@"Novice Exchange pressed");
-}
-
-
-
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-    NSLog(@"%@", segue.identifier);
-    if([segue.identifier isEqualToString:@"updateInfoSegue"]){
-        
-    }
-}
-
 
 @end

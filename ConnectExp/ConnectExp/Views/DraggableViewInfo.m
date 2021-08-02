@@ -12,7 +12,6 @@
 @implementation DraggableViewInfo{
     NSInteger cardsLoadedIndex; //%%% the index of the card you have loaded into the loadedCards array last
     NSMutableArray *loadedCards; //%%% the array of card loaded (change max_buffer_size to increase or decrease the number of cards this holds)
-    
     UIButton *menuButton;
     UIButton *messageButton;
     UIButton *checkButton;
@@ -224,75 +223,47 @@ static const float CARD_WIDTH = 290; //%%% width of the draggable card
     }
 
 }
-/*
-- (NSMutableDictionary *)getMatchesV1:(NSInteger *)N
+
+- (NSMutableDictionary *)getMatchesV1:(NSInteger)N
                      listOfIds:(NSMutableArray *)M
           InterestInDictionary:(NSMutableDictionary *)IID
 {
     NSMutableDictionary *res = [[NSMutableDictionary alloc] init];
+    NSMutableArray *keyArray = [[NSMutableArray alloc] init];
     for (id key in IID)
     {
         IID[key] = [NSMutableSet setWithArray:IID[key]];
         res[key] = [[NSMutableArray alloc] init];
+        [keyArray addObject:key];
     }
-    for (NSInteger i = 0; i < N; i++ )
-    {
-        NSInteger *interestLengthOfI = [IID[(id *)i] count];
-        for (NSInteger j = i+1; i < N; i++)
-        {
-            NSInteger *interestLengthOfJ = [IID[(id *)j] count];
-            NSInteger *count = 0;
-            for (NSString *interest in IID[i])
-            {
-                if (interest in IID[j])
-                {
+    for (int i = 0; i < N; i++) {
+        id keyForI = [keyArray objectAtIndex:i];
+        NSUInteger interestLengthOfI = [IID[keyForI] count];
+        for (int j = i+1; i < N; i++) {
+            id keyForJ = [keyArray objectAtIndex:j];
+            NSUInteger interestLengthOfJ = [IID[keyForJ] count];
+            int count = 0;
+            for (NSString *interest in IID[keyForI]) {
+                if ([IID[keyForJ] containsObject:interest]) {
                     count += 1;
                 }
             }
-            [res[i] addObject:@(j,count/interestLengthOfI)];
-            [res[j] addObject:@(i,count/interestLengthOfJ)];
+            // TODO: ADD object that has id of user and their score
+//            [res[i] addObject:@[j,count/interestLengthOfI]];
+//            [res[j] addObject:@[i,count/interestLengthOfJ]];
         }
     }
     for (id key in res)
     {
-        //find out how to sort by the number
-        res[key] = [res[key] sortedArray]
+        // TODO: Sort the array
+        //sort array
+        //res[key] = [res[key] sortedArray];
     }
     return res;
         
 }
-*/
 
-//%%% when you hit the right button, this is called and substitutes the swipe
-//-(void)swipeRight
-//{
-//    DraggableView *dragView = [loadedCards firstObject];
-//    dragView.overlayView.mode = GGOverlayViewModeRight;
-//    [UIView animateWithDuration:0.2 animations:^{
-//        dragView.overlayView.alpha = 1;
-//    }];
-//    [dragView rightClickAction];
-//}
-//
-////%%% when you hit the left button, this is called and substitutes the swipe
-//-(void)swipeLeft
-//{
-//    DraggableView *dragView = [loadedCards firstObject];
-//    dragView.overlayView.mode = GGOverlayViewModeLeft;
-//    [UIView animateWithDuration:0.2 animations:^{
-//        dragView.overlayView.alpha = 1;
-//    }];
-//    [dragView leftClickAction];
-//}
 
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect
-{
-    // Drawing code
-}
-*/
 
 @end
 

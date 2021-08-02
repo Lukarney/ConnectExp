@@ -4,6 +4,7 @@
 //
 //  Created by Luke Arney on 7/19/21.
 //
+
 #import "AppDelegate.h"
 #import "EditProfileViewController.h"
 #import "LoginViewController.h"
@@ -12,10 +13,12 @@
 #import <Parse/Parse.h>
 
 @interface ProfilesViewController ()
+
 @property (weak, nonatomic) IBOutlet UIImageView *profileImage;
 @property (weak, nonatomic) IBOutlet UILabel *profileName;
 @property (weak, nonatomic) IBOutlet UILabel *profileDescription;
 @property (strong, nonatomic) NSMutableArray *arrayOfInterest;
+
 @end
 
 @implementation ProfilesViewController
@@ -35,36 +38,20 @@
     //TODO: set up Interest
 }
 
--(void)fetchPost{
-    PFQuery *query = [PFQuery queryWithClassName:@"ConnectExpUser"];
-    //[query getObjectInBackgroundWithId:(@"%", self.profile[@"Author"].objectId)]
-}
 - (IBAction)logOutPressed:(id)sender {
     AppDelegate *appDelegate = (AppDelegate *)self.view.window.windowScene.delegate;
     NSLog(@"here");
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     LoginViewController *loginViewController = [storyboard instantiateViewControllerWithIdentifier:@"loginViewController"];
     appDelegate.window.rootViewController = loginViewController;
-    
     [PFUser logOutInBackgroundWithBlock:^(NSError * _Nullable error) {
-        if(error != nil){
+        if (error != nil) {
             NSLog(@"User log out failed: %@", error.localizedDescription);
-        }
-        else {
+        } else {
             NSLog(@"Logged out successfully");
             [self dismissViewControllerAnimated:YES completion:nil];
         }
-        
     }];
 }
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end
