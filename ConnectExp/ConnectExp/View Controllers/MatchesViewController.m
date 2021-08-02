@@ -72,7 +72,9 @@
         UITableViewCell *tappedCell = sender;
         NSIndexPath *indexPath = [self.tableView indexPathForCell:tappedCell];
         PFUser *tappedUser = self.arrayOfMatches[indexPath.row];
-        ChatViewController *chatViewController = [segue destinationViewController];
+        ChatViewController *chatViewController = [(UINavigationController *)segue.destinationViewController topViewController];
+        NSLog(@"%@", chatViewController);
+        NSLog(@"%@", tappedUser);
         chatViewController.userOther = tappedUser;
         chatViewController.userSelf = PFUser.currentUser;
         //create query to grab to show the thread

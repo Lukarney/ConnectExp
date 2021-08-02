@@ -224,6 +224,7 @@ static const float CARD_WIDTH = 290; //%%% width of the draggable card
     }
 
 }
+/*
 - (NSMutableDictionary *)getMatchesV1:(NSInteger *)N
                      listOfIds:(NSMutableArray *)M
           InterestInDictionary:(NSMutableDictionary *)IID
@@ -260,6 +261,7 @@ static const float CARD_WIDTH = 290; //%%% width of the draggable card
     return res;
         
 }
+*/
 
 //%%% when you hit the right button, this is called and substitutes the swipe
 //-(void)swipeRight

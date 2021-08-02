@@ -6,11 +6,12 @@
 //
 #import "ChatViewController.h"
 #import <Parse/Parse.h>
+#import "ChatCell.h"
 
 @interface ChatViewController () <UITableViewDelegate, UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UITextField *inputField;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
-
+@property (weak, nonatomic) ChatCell *chatCell;
 
 @end
 
@@ -31,9 +32,25 @@
  
  TODO: Order chats by DESC Createdat
  */
+- (void)loadMessages {
+    PFQuery *query = [PFQuery queryWithClassName:@"Message"];
+    [query whereKey:@"likesCount" greaterThan:@100];
+    query.limit = 20;
+
+    // fetch data asynchronously
+    [query findObjectsInBackgroundWithBlock:^(NSArray *posts, NSError *error) {
+        if (posts != nil) {
+            // do something with the array of object returned by the call
+        } else {
+            NSLog(@"%@", error.localizedDescription);
+        }
+    }];
+}
 - (IBAction)sendPressed:(id)sender {
     PFObject *chatMessage = [PFObject objectWithClassName:@"Message"];
     chatMessage[@"text"] = self.inputField.text;
+    chatMessage[@"sender"] = self.userSelf;
+    chatMessage[@"receiver"] = self.userOther;
     //save in background
     [chatMessage saveInBackgroundWithBlock:^(BOOL succeeded, NSError * error) {
         if (succeeded) {
@@ -52,5 +69,16 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+//- (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView
+//                 cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
+//    <#code#>
+//}
+
+- (NSInteger)tableView:(nonnull UITableView *)tableView
+ numberOfRowsInSection:(NSInteger)section {
+    return 0;
+}
+
 
 @end
