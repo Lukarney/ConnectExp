@@ -159,6 +159,7 @@ static const float CARD_WIDTH = 290; //%%% width of the draggable card
 #warning include own action here!
 //%%% action called when the card goes to the right.
 // This should be customized with your own action
+// TODO: Add concurrency to card swiped right to update the matches list
 -(void)cardSwipedRight:(UIView *)card {
     //do whatever you want with the card that was swiped
 //    DraggableView *c = (DraggableView *)card;
@@ -205,8 +206,6 @@ static const float CARD_WIDTH = 290; //%%% width of the draggable card
             NSLog(@"User did not add matched user");
         }
     }
-    
-    //[PFUser.currentUser addObject:<#(nonnull id)#> forKey:<#(nonnull NSString *)#>];
     [loadedCards removeObjectAtIndex:0]; //%%% card was swiped, so it's no longer a "loaded card"
     if (cardsLoadedIndex < [allCards count]) { //%%% if we haven't reached the end of all cards, put another into the loaded cards
         [loadedCards addObject:[allCards objectAtIndex:cardsLoadedIndex]];
@@ -239,7 +238,6 @@ static const float CARD_WIDTH = 290; //%%% width of the draggable card
                     count += 1;
                 }
             }
-            // TODO: ADD object that has id of user and their score
             // Create arrays and add Ids then the percentage
             NSMutableArray *iArray = [[NSMutableArray alloc] init];;
             NSMutableArray *jArray = [[NSMutableArray alloc] init];;
