@@ -12,7 +12,6 @@
 #define ROTATION_MAX 1 //%%% the maximum rotation allowed in radians.  Higher = card can keep rotating longer
 #define ROTATION_STRENGTH 320 //%%% strength of rotation. Higher = weaker rotation
 
-
 #import "DraggableView.h"
 
 @implementation DraggableView {
@@ -56,7 +55,6 @@
 }
 
 -(void)dragged:(UIPanGestureRecognizer *)gestureRecognizer{
-    
     //%%% this extracts the coordinate data from your swipe movement. (i.e. How much did you move?)
        xFromCenter = [gestureRecognizer translationInView:self].x; //%%% positive for right swipe, negative for left
        yFromCenter = [gestureRecognizer translationInView:self].y; //%%% positive for up, negative for down
@@ -173,6 +171,5 @@
     
     NSLog(@"NO");
 }
-
 
 @end

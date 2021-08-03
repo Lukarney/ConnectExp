@@ -65,7 +65,6 @@ static const float CARD_WIDTH = 290; //%%% width of the draggable card
                 NSLog(@"%@", error.localizedDescription);
             }
         }];
-        
     }
     return self;
 }
@@ -95,8 +94,7 @@ static const float CARD_WIDTH = 290; //%%% width of the draggable card
 //%%% creates a card and returns it.  This should be customized to fit your needs.
 // use "index" to indicate where the information should be pulled.  If this doesn't apply to you, feel free
 // to get rid of it (eg: if you are building cards from data from the internet)
--(DraggableView *)createDraggableViewWithDataAtIndex:(NSInteger)index
-{
+-(DraggableView *)createDraggableViewWithDataAtIndex:(NSInteger)index {
     DraggableView *draggableView = [[DraggableView alloc]initWithFrame:CGRectMake((self.frame.size.width - CARD_WIDTH)/2, (self.frame.size.height - CARD_HEIGHT)/2, CARD_WIDTH, CARD_HEIGHT)];
     PFUser *user = self.exampleCardLabels[index];
     draggableView.userPointer = user;
@@ -106,14 +104,12 @@ static const float CARD_WIDTH = 290; //%%% width of the draggable card
         NSURL *imageURL = [NSURL URLWithString:image.url];
         [draggableView.picture setImageWithURL:imageURL];
     }
-    
     draggableView.delegate = self;
     return draggableView;
 }
 
 //%%% loads all the cards and puts the first x in the "loaded cards" array
--(void)loadCards
-{
+-(void)loadCards {
     NSLog(@"count: %lu", (unsigned long)[self.exampleCardLabels count]);
     if([self.exampleCardLabels count] > 0) {
         NSInteger numLoadedCardsCap =(([self.exampleCardLabels count] > MAX_BUFFER_SIZE)?MAX_BUFFER_SIZE:[self.exampleCardLabels count]);
@@ -163,8 +159,7 @@ static const float CARD_WIDTH = 290; //%%% width of the draggable card
 #warning include own action here!
 //%%% action called when the card goes to the right.
 // This should be customized with your own action
--(void)cardSwipedRight:(UIView *)card
-{
+-(void)cardSwipedRight:(UIView *)card {
     //do whatever you want with the card that was swiped
 //    DraggableView *c = (DraggableView *)card;
     DraggableView *currentCard = [loadedCards objectAtIndex:0];
@@ -209,13 +204,10 @@ static const float CARD_WIDTH = 290; //%%% width of the draggable card
         else {
             NSLog(@"User did not add matched user");
         }
-        
     }
     
     //[PFUser.currentUser addObject:<#(nonnull id)#> forKey:<#(nonnull NSString *)#>];
     [loadedCards removeObjectAtIndex:0]; //%%% card was swiped, so it's no longer a "loaded card"
-    
-    
     if (cardsLoadedIndex < [allCards count]) { //%%% if we haven't reached the end of all cards, put another into the loaded cards
         [loadedCards addObject:[allCards objectAtIndex:cardsLoadedIndex]];
         cardsLoadedIndex++;//%%% loaded a card, so have to increment count
@@ -225,9 +217,8 @@ static const float CARD_WIDTH = 290; //%%% width of the draggable card
 }
 
 - (NSMutableDictionary *)getMatchesV1:(NSInteger)N
-                     listOfIds:(NSMutableArray *)M
-          InterestInDictionary:(NSMutableDictionary *)IID
-{
+                            listOfIds:(NSMutableArray *)M
+                 InterestInDictionary:(NSMutableDictionary *)IID {
     NSMutableDictionary *res = [[NSMutableDictionary alloc] init];
     NSMutableArray *keyArray = [[NSMutableArray alloc] init];
     for (id key in IID)
@@ -249,21 +240,34 @@ static const float CARD_WIDTH = 290; //%%% width of the draggable card
                 }
             }
             // TODO: ADD object that has id of user and their score
-//            [res[i] addObject:@[j,count/interestLengthOfI]];
-//            [res[j] addObject:@[i,count/interestLengthOfJ]];
+            // Create arrays and add Ids then the percentage
+            NSMutableArray *iArray = [[NSMutableArray alloc] init];;
+            NSMutableArray *jArray = [[NSMutableArray alloc] init];;
+            [iArray addObject:keyForI];
+            [jArray addObject:keyForJ];
+            // Add Percentage
+            [iArray addObject:[NSNumber numberWithInt:count/interestLengthOfI]];
+            [jArray addObject:[NSNumber numberWithInt:count/interestLengthOfJ]];
+            // Add array to dictionary for respective keys
+            [res[keyForI] addObject:iArray];
+            [res[keyForJ] addObject:jArray];
         }
     }
     for (id key in res)
     {
         // TODO: Sort the array
-        //sort array
-        //res[key] = [res[key] sortedArray];
+        [res[key] sortUsingComparator:^(id obj1, id obj2) {
+            if ([obj1 objectAtIndex:1] > [obj2 objectAtIndex:1]) {
+                return (NSComparisonResult)NSOrderedAscending;
+            }
+            if ([obj1 objectAtIndex:1] < [obj2 objectAtIndex:1]) {
+                return (NSComparisonResult)NSOrderedDescending;
+            }
+            return (NSComparisonResult)NSOrderedSame;
+        }];
     }
     return res;
         
 }
 
-
-
 @end
-
