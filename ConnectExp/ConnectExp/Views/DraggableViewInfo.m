@@ -6,6 +6,7 @@
 //
 
 #import "DraggableViewInfo.h"
+#import "SwipingViewController.h"
 #import "UIImageView+AFNetworking.h"
 #import <Parse/Parse.h>
 
@@ -40,6 +41,7 @@ static const float CARD_WIDTH = 290; //%%% width of the draggable card
           // do stuff with the user
             self.arrayOfMatches = [[NSMutableArray alloc] init];
             NSLog(@"got current user");
+            // TODO: Add below code later when matching algo is correct
 //            if ([currentUser[@"matches"] count] > 0){
 //                self.arrayOfMatches = currentUser[@"matches"];
 //                NSLog(@"array at the beg: %@", self.arrayOfMatches);
@@ -51,10 +53,15 @@ static const float CARD_WIDTH = 290; //%%% width of the draggable card
         }
         PFQuery *query = [PFUser query];
         [query includeKey:@"username"];
-        // fetch data asynchronously
+        // TODO: Fetch data asynchronously
         [query findObjectsInBackgroundWithBlock:^(NSArray *users, NSError *error) {
             if (users != nil) {
-                // do something with the array of object returned by the call
+                // Do something with the array of object returned by the call
+                // Call users to get Array and dictionary
+                NSMutableArray *userIds = [self getListOfIds:users];
+                NSMutableDictionary *IID = [self createDictionaryOfInterests:users];
+                // Call algorithm to get matches
+                
                 self.exampleCardLabels = (NSMutableArray *) users;
                 loadedCards = [[NSMutableArray alloc] init];
                 self.allCards = [[NSMutableArray alloc] init];
@@ -70,9 +77,7 @@ static const float CARD_WIDTH = 290; //%%% width of the draggable card
 }
 
 //%%% sets up the extra buttons on the screen
--(void)setupView
-{
-#warning customize all of this.  These are just place holders to make it look pretty
+-(void)setupView {
     self.backgroundColor = [UIColor colorWithRed:.92 green:.93 blue:.95 alpha:1]; //the gray background colors
 //    menuButton = [[UIButton alloc]initWithFrame:CGRectMake(17, 34, 22, 15)];
 //    [menuButton setImage:[UIImage imageNamed:@"menuButton"] forState:UIControlStateNormal];
@@ -89,11 +94,8 @@ static const float CARD_WIDTH = 290; //%%% width of the draggable card
 //    [self addSubview:xButton];
 //    [self addSubview:checkButton];
 }
-
-#warning include own card customization here!
 //%%% creates a card and returns it.  This should be customized to fit your needs.
-// use "index" to indicate where the information should be pulled.  If this doesn't apply to you, feel free
-// to get rid of it (eg: if you are building cards from data from the internet)
+// Use "index" to indicate where the information should be pulled.
 -(DraggableView *)createDraggableViewWithDataAtIndex:(NSInteger)index {
     DraggableView *draggableView = [[DraggableView alloc]initWithFrame:CGRectMake((self.frame.size.width - CARD_WIDTH)/2, (self.frame.size.height - CARD_HEIGHT)/2, CARD_WIDTH, CARD_HEIGHT)];
     PFUser *user = self.exampleCardLabels[index];
@@ -110,6 +112,7 @@ static const float CARD_WIDTH = 290; //%%% width of the draggable card
 
 //%%% loads all the cards and puts the first x in the "loaded cards" array
 -(void)loadCards {
+    DISPATCH_QUEUE_PRIORITY_BACKGROUND;
     NSLog(@"count: %lu", (unsigned long)[self.exampleCardLabels count]);
     if([self.exampleCardLabels count] > 0) {
         NSInteger numLoadedCardsCap =(([self.exampleCardLabels count] > MAX_BUFFER_SIZE)?MAX_BUFFER_SIZE:[self.exampleCardLabels count]);
@@ -213,6 +216,30 @@ static const float CARD_WIDTH = 290; //%%% width of the draggable card
         [self insertSubview:[loadedCards objectAtIndex:(MAX_BUFFER_SIZE-1)] belowSubview:[loadedCards objectAtIndex:(MAX_BUFFER_SIZE-2)]];
     }
 
+}
+- (NSMutableArray *)getListOfIds:(NSMutableArray *)users {
+    NSMutableArray *ArrayOfUserIds = [[NSMutableArray alloc] init];
+    for (PFUser *user in users)
+    {
+        [ArrayOfUserIds addObject:user.objectId];
+    }
+    return ArrayOfUserIds;
+}
+- (NSMutableDictionary *)createDictionaryOfInterests:(NSMutableArray *)users {
+    NSMutableDictionary *dictForUserInterest = [[NSMutableDictionary alloc] init];
+    
+    for (PFUser *user in users)
+    {
+        // Query User
+        PFQuery *userQuery = [PFUser query];
+        [userQuery whereKey:@"objectId" equalTo:user.objectId];
+        userQuery.limit = 1;
+        PFUser *userObjects = [userQuery findObjects].firstObject;
+        dictForUserInterest[user.objectId] = [[NSMutableArray alloc] init];
+        dictForUserInterest[user.objectId] = userObjects[@"interests"];
+        
+    }
+    return dictForUserInterest;
 }
 
 - (NSMutableDictionary *)getMatchesV1:(NSInteger)N

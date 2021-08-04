@@ -25,6 +25,9 @@
     // Do any additional setup after loading the view.
     DraggableViewInfo *draggableBackground = [[DraggableViewInfo alloc]initWithFrame:self.view.frame];
     [self.view addSubview:draggableBackground];
+    // Add Global Queue here?
+    // Maybe make a delegate fxn for the draggable view
+
 }
 
 

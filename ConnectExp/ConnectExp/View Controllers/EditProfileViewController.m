@@ -100,7 +100,6 @@
     }
     newPFUser[@"description"] = self.bioField.text;
     newPFUser[@"username"] = self.usernameField.text;
-    [self.arrayOfInterest addObject:@1];
     newPFUser[@"interests"] = self.arrayOfInterest;
     newPFUser[@"matches"] = self.arrayOfMatches;
     NSLog(@"%@", newPFUser);
@@ -188,23 +187,41 @@ didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info {
 
 - (IBAction)cookingPushed:(id)sender {
     NSLog(@"Food & Drink pressed");
+    if (![self.arrayOfInterest containsObject:@"cooking"]){
+        [self.arrayOfInterest addObject:@"cooking"];
+    }
 }
 
 - (IBAction)musicPushed:(id)sender {
     NSLog(@"Music pressed");
+    if (![self.arrayOfInterest containsObject:@"music"]) {
+        [self.arrayOfInterest addObject:@"music"];
+    }
 }
 
 - (IBAction)gamesPushed:(id)sender {
     NSLog(@"Games pressed");
+    if (![self.arrayOfInterest containsObject:@"gaming"]) {
+        [self.arrayOfInterest addObject:@"gaming"];
+    }
 }
 
 - (IBAction)naturePushed:(id)sender {
+    if (![self.arrayOfInterest containsObject:@"nature"]) {
+        [self.arrayOfInterest addObject:@"nature"];
+    }
 }
 
 - (IBAction)travelPushed:(id)sender {
+    if (![self.arrayOfInterest containsObject:@"traveling"]) {
+        [self.arrayOfInterest addObject:@"traveling"];
+    }
 }
 
 - (IBAction)sportsPushed:(id)sender {
+    if (![self.arrayOfInterest containsObject:@"sports"]) {
+        [self.arrayOfInterest addObject:@"sports"];
+    }
 }
 
 @end

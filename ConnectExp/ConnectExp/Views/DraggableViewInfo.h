@@ -18,6 +18,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (retain,nonatomic)NSMutableArray *exampleCardLabels; //%%% the labels the cards
 @property (retain,nonatomic)NSMutableArray *allCards; //%%% the labels the cards
+// TODO: Create file for matches dictionary and for IDs and for Interest
 @property (retain,nonatomic)NSMutableArray *arrayOfMatches; 
 @property (weak, nonatomic) DraggableView *card;
 
