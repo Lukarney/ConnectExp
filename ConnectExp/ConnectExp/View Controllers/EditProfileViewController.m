@@ -12,6 +12,12 @@
 @interface EditProfileViewController ()
 
 @property (weak, nonatomic) IBOutlet UIButton *imageButton;
+@property (weak, nonatomic) IBOutlet UIButton *cookingButton;
+@property (weak, nonatomic) IBOutlet UIButton *musicButton;
+@property (weak, nonatomic) IBOutlet UIButton *gamingButton;
+@property (weak, nonatomic) IBOutlet UIButton *natureButton;
+@property (weak, nonatomic) IBOutlet UIButton *travelButton;
+@property (weak, nonatomic) IBOutlet UIButton *sportsButton;
 @property (weak, nonatomic) IBOutlet UITextField *usernameField;
 @property (weak, nonatomic) IBOutlet UITextField *passwordField;
 @property (weak, nonatomic) IBOutlet UITextView *bioField;
@@ -180,7 +186,7 @@ didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info {
 
 //TODO: Pick Interest
 
-- (IBAction)FoodDrinkPushed:(id)sender {
+- (IBAction)cookingPushed:(id)sender {
     NSLog(@"Food & Drink pressed");
 }
 
@@ -190,6 +196,15 @@ didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info {
 
 - (IBAction)gamesPushed:(id)sender {
     NSLog(@"Games pressed");
+}
+
+- (IBAction)naturePushed:(id)sender {
+}
+
+- (IBAction)travelPushed:(id)sender {
+}
+
+- (IBAction)sportsPushed:(id)sender {
 }
 
 @end
