@@ -65,11 +65,14 @@ static const float CARD_WIDTH = 290; //%%% width of the draggable card
                 // Call algorithm to get matches
                 NSMutableDictionary *matchesDict = [self getMatchesV1:[userIds count] listOfIds:userIds InterestInDictionary:IID];
                 NSLog(@"matchesDict: %@", matchesDict);
-                self.exampleCardLabels = (NSMutableArray *) users;
+                NSMutableArray *orderedUsers = [self getUsersOrdered:PFUser.currentUser getUsers:users matchesDict:matchesDict];
+                NSLog(@"orderedUsers: %@", orderedUsers);
+                NSLog(@"self: %@", PFUser.currentUser.objectId);
+                // TODO: set out example cards to be equal to the users in the dictionary from current users keys
+                self.exampleCardLabels = orderedUsers;
                 loadedCards = [[NSMutableArray alloc] init];
                 self.allCards = [[NSMutableArray alloc] init];
                 cardsLoadedIndex = 0;
-                NSLog(@"list :%@", self.exampleCardLabels);
                 [self loadCards];
             } else {
                 NSLog(@"%@", error.localizedDescription);
@@ -255,10 +258,10 @@ static const float CARD_WIDTH = 290; //%%% width of the draggable card
         IID[key] = [NSMutableSet setWithArray:IID[key]];
         res[key] = [[NSMutableArray alloc] init];
     }
-    for (int i = 0; i < N-1; i++) {
+    for (int i = 0; i < N; i++) {
         id keyForI = [keyArray objectAtIndex:i];
         NSUInteger interestLengthOfI = [IID[keyForI] count];
-        for (int j = i+1; i < N-1; i++) {
+        for (int j = i+1; j < N; j++) {
             id keyForJ = [keyArray objectAtIndex:j];
             NSUInteger interestLengthOfJ = [IID[keyForJ] count];
             int count = 0;
@@ -288,16 +291,33 @@ static const float CARD_WIDTH = 290; //%%% width of the draggable card
         // TODO: Sort the array
         [res[key] sortUsingComparator:^(id obj1, id obj2) {
             if ([obj1 objectAtIndex:1] > [obj2 objectAtIndex:1]) {
-                return (NSComparisonResult)NSOrderedAscending;
-            }
-            if ([obj1 objectAtIndex:1] < [obj2 objectAtIndex:1]) {
                 return (NSComparisonResult)NSOrderedDescending;
+            } else if ([obj1 objectAtIndex:1] < [obj2 objectAtIndex:1]) {
+                return (NSComparisonResult)NSOrderedAscending;
+            } else {
+                return (NSComparisonResult)NSOrderedSame;
             }
-            return (NSComparisonResult)NSOrderedSame;
         }];
     }
     return res;
         
+}
+- (NSMutableArray *)getUsersOrdered:(PFUser *)currentUser
+                           getUsers:(NSArray *)users
+                        matchesDict:(NSMutableDictionary *)matchesDict {
+    NSMutableArray *usersOrdered = [[NSMutableArray alloc] init];
+    NSMutableArray *returnedUsers = [[NSMutableArray alloc] init];
+    NSMutableArray *potentialMatches = matchesDict[currentUser.objectId];
+    for (NSMutableArray *matchesList in potentialMatches) {
+        [usersOrdered addObject:[matchesList objectAtIndex:0]];
+    }
+    for (PFUser *user in users){
+        if ([usersOrdered containsObject:user.objectId]){
+            [returnedUsers addObject:user];
+        }
+        
+    }
+    return returnedUsers;
 }
 
 @end
