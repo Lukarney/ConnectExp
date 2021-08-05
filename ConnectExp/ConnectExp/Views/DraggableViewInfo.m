@@ -60,8 +60,11 @@ static const float CARD_WIDTH = 290; //%%% width of the draggable card
                 // Call users to get Array and dictionary
                 NSMutableArray *userIds = [self getListOfIds:users];
                 NSMutableDictionary *IID = [self createDictionaryOfInterests:users];
+                NSLog(@"userIds: %@", userIds);
+                NSLog(@"IID: %@", IID);
                 // Call algorithm to get matches
-                
+                NSMutableDictionary *matchesDict = [self getMatchesV1:[userIds count] listOfIds:userIds InterestInDictionary:IID];
+                NSLog(@"matchesDict: %@", matchesDict);
                 self.exampleCardLabels = (NSMutableArray *) users;
                 loadedCards = [[NSMutableArray alloc] init];
                 self.allCards = [[NSMutableArray alloc] init];
@@ -246,17 +249,16 @@ static const float CARD_WIDTH = 290; //%%% width of the draggable card
                             listOfIds:(NSMutableArray *)M
                  InterestInDictionary:(NSMutableDictionary *)IID {
     NSMutableDictionary *res = [[NSMutableDictionary alloc] init];
-    NSMutableArray *keyArray = [[NSMutableArray alloc] init];
-    for (id key in IID)
+    NSArray *keyArray = [IID allKeys];
+    for (id key in keyArray)
     {
         IID[key] = [NSMutableSet setWithArray:IID[key]];
         res[key] = [[NSMutableArray alloc] init];
-        [keyArray addObject:key];
     }
-    for (int i = 0; i < N; i++) {
+    for (int i = 0; i < N-1; i++) {
         id keyForI = [keyArray objectAtIndex:i];
         NSUInteger interestLengthOfI = [IID[keyForI] count];
-        for (int j = i+1; i < N; i++) {
+        for (int j = i+1; i < N-1; i++) {
             id keyForJ = [keyArray objectAtIndex:j];
             NSUInteger interestLengthOfJ = [IID[keyForJ] count];
             int count = 0;
@@ -266,16 +268,19 @@ static const float CARD_WIDTH = 290; //%%% width of the draggable card
                 }
             }
             // Create arrays and add Ids then the percentage
-            NSMutableArray *iArray = [[NSMutableArray alloc] init];;
-            NSMutableArray *jArray = [[NSMutableArray alloc] init];;
-            [iArray addObject:keyForI];
-            [jArray addObject:keyForJ];
+            NSMutableArray *arrayForI = [[NSMutableArray alloc] init];;
+            NSMutableArray *arrayForJ = [[NSMutableArray alloc] init];;
+            [arrayForI addObject:keyForJ];
+            [arrayForJ addObject:keyForI];
             // Add Percentage
-            [iArray addObject:[NSNumber numberWithInt:count/interestLengthOfI]];
-            [jArray addObject:[NSNumber numberWithInt:count/interestLengthOfJ]];
+            NSLog(@"count before calc: %d", count);
+            NSLog(@"length before calc: %lu", (unsigned long)interestLengthOfI);
+            NSLog(@"calc before calc: %f", (float)count/(float)interestLengthOfI);
+            [arrayForI addObject:[NSNumber  numberWithFloat:(float)count/(float)interestLengthOfI]];
+            [arrayForJ addObject:[NSNumber numberWithFloat:(float)count/(float)interestLengthOfJ]];
             // Add array to dictionary for respective keys
-            [res[keyForI] addObject:iArray];
-            [res[keyForJ] addObject:jArray];
+            [res[keyForI] addObject:arrayForI];
+            [res[keyForJ] addObject:arrayForJ];
         }
     }
     for (id key in res)
