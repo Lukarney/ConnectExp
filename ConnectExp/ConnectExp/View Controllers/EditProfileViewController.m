@@ -63,6 +63,7 @@
         // See if interests is nil
         if (self.user[@"interests"] != nil) {
             self.arrayOfInterest = self.user[@"interests"];
+            [self checkButtonStatus];
         } else {
             self.arrayOfInterest = [[NSMutableArray array] init];
         }
@@ -183,45 +184,81 @@ didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info {
     return newImage;
 }
 
-//TODO: Pick Interest
+
+- (void)changeBackgroundButton:(UIButton*)button {
+    if ([self.arrayOfInterest containsObject:[button.titleLabel.text lowercaseString]]) {
+        button.backgroundColor = [UIColor systemOrangeColor];
+        [button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    } else {
+        button.backgroundColor = [UIColor whiteColor];
+        [button setTitleColor:[UIColor systemOrangeColor] forState:UIControlStateNormal];
+    }
+}
+
+- (void)checkButtonStatus {
+    [self changeBackgroundButton:self.cookingButton];
+    [self changeBackgroundButton:self.musicButton];
+    [self changeBackgroundButton:self.gamingButton];
+    [self changeBackgroundButton:self.natureButton];
+    [self changeBackgroundButton:self.travelButton];
+    [self changeBackgroundButton:self.sportsButton];
+}
 
 - (IBAction)cookingPushed:(id)sender {
     NSLog(@"Food & Drink pressed");
     if (![self.arrayOfInterest containsObject:@"cooking"]){
         [self.arrayOfInterest addObject:@"cooking"];
+    } else {
+        [self.arrayOfInterest removeObject:@"cooking"];
     }
+    [self changeBackgroundButton:self.cookingButton];
 }
 
 - (IBAction)musicPushed:(id)sender {
     NSLog(@"Music pressed");
     if (![self.arrayOfInterest containsObject:@"music"]) {
         [self.arrayOfInterest addObject:@"music"];
+    } else {
+        [self.arrayOfInterest removeObject:@"music"];
     }
+    [self changeBackgroundButton:self.musicButton];
 }
 
 - (IBAction)gamesPushed:(id)sender {
     NSLog(@"Games pressed");
     if (![self.arrayOfInterest containsObject:@"gaming"]) {
         [self.arrayOfInterest addObject:@"gaming"];
+    } else {
+        [self.arrayOfInterest removeObject:@"gaming"];
     }
+    [self changeBackgroundButton:self.gamingButton];
 }
 
 - (IBAction)naturePushed:(id)sender {
     if (![self.arrayOfInterest containsObject:@"nature"]) {
         [self.arrayOfInterest addObject:@"nature"];
+    } else {
+        [self.arrayOfInterest removeObject:@"nature"];
     }
+    [self changeBackgroundButton:self.natureButton];
 }
 
 - (IBAction)travelPushed:(id)sender {
     if (![self.arrayOfInterest containsObject:@"traveling"]) {
         [self.arrayOfInterest addObject:@"traveling"];
+    } else {
+        [self.arrayOfInterest removeObject:@"traveling"];
     }
+    [self changeBackgroundButton:self.travelButton];
 }
 
 - (IBAction)sportsPushed:(id)sender {
     if (![self.arrayOfInterest containsObject:@"sports"]) {
         [self.arrayOfInterest addObject:@"sports"];
+    } else {
+        [self.arrayOfInterest removeObject:@"sports"];
     }
+    [self changeBackgroundButton:self.sportsButton];
 }
 
 @end
