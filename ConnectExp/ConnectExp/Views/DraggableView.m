@@ -28,17 +28,46 @@
         [self setupView];
         
 //placeholder stuff, replace with card-specific information
-//TODO: have card information here and make it pattern with of the 
-        self.information = [[UILabel alloc]initWithFrame:CGRectMake(0, 100, self.frame.size.width, 100)];
+//TODO: have card information here and make it pattern with of the
+        // Set up picture
+        self.picture = [[UIImageView alloc]initWithFrame:CGRectMake(self.frame.size.width/4, 0, self.frame.size.width/2, self.frame.size.width/2)];
+        // Set up username
+        self.information = [[UILabel alloc]initWithFrame:CGRectMake(0, (self.frame.size.width/2)+8, self.frame.size.width, 16)];
         self.information.text = @"no info given";
         [self.information setTextAlignment:NSTextAlignmentCenter];
         self.information.textColor = [UIColor blackColor];
+        // Set up Interest label
+        UILabel *interestLabel = [[UILabel alloc]initWithFrame:CGRectMake(16, self.information.frame.origin.y+self.information.frame.size.height+8, self.frame.size.width, 20)];
+        interestLabel.text = @"Interest: ";
+        [interestLabel setTextAlignment:NSTextAlignmentLeft];
+        interestLabel.textColor = [UIColor blackColor];
+        // Set up Interests
+        self.interestInformation = [[UILabel alloc]initWithFrame:CGRectMake(24, interestLabel.frame.origin.y+interestLabel.frame.size.height, self.frame.size.width, 20)];
+        self.interestInformation.text = self.interestInformation.text;
+        [self.interestInformation setTextAlignment:NSTextAlignmentLeft];
+        self.interestInformation.textColor = [UIColor blackColor];
+        [self.interestInformation setNumberOfLines:0];
+        // Set up Descripton label
+        UILabel *descriptionLabel = [[UILabel alloc]initWithFrame:CGRectMake(16, self.interestInformation.frame.origin.y+self.interestInformation.frame.size.height+8, self.frame.size.width, 20)];
+        descriptionLabel.text = @"Description: ";
+        [descriptionLabel setTextAlignment:NSTextAlignmentLeft];
+        descriptionLabel.textColor = [UIColor blackColor];
+        // Set up Desc
+        self.desc = [[UITextView alloc]initWithFrame:CGRectMake(24, descriptionLabel.frame.origin.y+descriptionLabel.frame.size.height-8, self.frame.size.width-24, 135)];
+        self.desc.text = PFUser.currentUser[@"description"];
+        [self.desc setTextAlignment:NSTextAlignmentLeft];
+        self.desc.textColor = [UIColor blackColor];
+        self.desc.editable = NO;
+        self.desc.font = [UIFont fontWithName:@"Helvetica" size:16];
+        // Set up pangesture and background
         self.backgroundColor = [UIColor whiteColor];
-// placeholder stuff
-        self.picture = [[UIImageView alloc]initWithFrame:CGRectMake(self.frame.size.width/4, 0, self.frame.size.width/2, self.frame.size.width/2)];
         self.panGestureRecognizer = [[UIPanGestureRecognizer alloc]initWithTarget:self action:@selector(dragged:)];
         //add gesture recognizer and add subview to the hierarchy
         [self addGestureRecognizer:self.panGestureRecognizer];
+        [self addSubview:self.desc];
+        [self addSubview:descriptionLabel];
+        [self addSubview:interestLabel];
+        [self addSubview:self.interestInformation];
         [self addSubview:self.information];
         [self addSubview:self.picture];
         

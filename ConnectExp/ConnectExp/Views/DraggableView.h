@@ -24,11 +24,12 @@ NS_ASSUME_NONNULL_BEGIN
 @property (strong, nonatomic) UIImageView *profilePicture;
 @property (nonatomic) CGPoint originalPoint;
 @property (nonatomic,strong)UILabel *information;
+@property (nonatomic,strong)NSArray *interests;
+@property (nonatomic,strong)UILabel *interestInformation;
+@property (nonatomic,strong)UITextView *desc;
 @property (nonatomic, strong) UIImageView *picture;
 @property (nonatomic,strong)UILabel *author;
 @property (nonatomic, strong) PFUser *userPointer;
-@property (weak, nonatomic) IBOutlet UILabel *name;
-@property (weak, nonatomic) IBOutlet UILabel *cardInformation;
 @property (weak, nonatomic) IBOutlet DraggableView *card;
 
 @end

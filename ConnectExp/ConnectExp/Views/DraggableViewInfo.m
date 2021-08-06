@@ -107,6 +107,16 @@ static const float CARD_WIDTH = 290; //%%% width of the draggable card
     PFUser *user = self.exampleCardLabels[index];
     draggableView.userPointer = user;
     draggableView.information.text = user[@"username"];
+    draggableView.desc.text = user[@"description"];
+    draggableView.interests = user[@"interests"];
+    for (NSString *interest in draggableView.interests) {
+        // Check if string is empty so (Null) doesn't show
+        if ([draggableView.interestInformation.text length] == 0){
+            draggableView.interestInformation.text = [NSString stringWithFormat:@"%@", interest];
+        } else {
+            draggableView.interestInformation.text = [NSString stringWithFormat:@"%@, %@", draggableView.interestInformation.text, interest];
+        }
+    }
     if(user[@"image"] != nil){
         PFFileObject *image = user[@"image"];
         NSURL *imageURL = [NSURL URLWithString:image.url];
@@ -271,14 +281,14 @@ static const float CARD_WIDTH = 290; //%%% width of the draggable card
                 }
             }
             // Create arrays and add Ids then the percentage
-            NSMutableArray *arrayForI = [[NSMutableArray alloc] init];;
-            NSMutableArray *arrayForJ = [[NSMutableArray alloc] init];;
+            NSMutableArray *arrayForI = [[NSMutableArray alloc] init];
+            NSMutableArray *arrayForJ = [[NSMutableArray alloc] init];
             [arrayForI addObject:keyForJ];
             [arrayForJ addObject:keyForI];
-            // Add Percentage
             NSLog(@"count before calc: %d", count);
             NSLog(@"length before calc: %lu", (unsigned long)interestLengthOfI);
             NSLog(@"calc before calc: %f", (float)count/(float)interestLengthOfI);
+            // Add Score
             [arrayForI addObject:[NSNumber  numberWithFloat:(float)count/(float)interestLengthOfI]];
             [arrayForJ addObject:[NSNumber numberWithFloat:(float)count/(float)interestLengthOfJ]];
             // Add array to dictionary for respective keys
@@ -288,7 +298,7 @@ static const float CARD_WIDTH = 290; //%%% width of the draggable card
     }
     for (id key in res)
     {
-        // TODO: Sort the array
+        // Sorts the array
         [res[key] sortUsingComparator:^(id obj1, id obj2) {
             if ([obj1 objectAtIndex:1] > [obj2 objectAtIndex:1]) {
                 return (NSComparisonResult)NSOrderedDescending;
