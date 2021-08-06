@@ -17,7 +17,8 @@
 @property (weak, nonatomic) IBOutlet UIImageView *profileImage;
 @property (weak, nonatomic) IBOutlet UILabel *profileName;
 @property (weak, nonatomic) IBOutlet UILabel *profileDescription;
-@property (strong, nonatomic) NSMutableArray *arrayOfInterest;
+@property (weak, nonatomic) IBOutlet UILabel *interestsText;
+@property (weak, nonatomic) NSMutableArray *arrayOfInterest;
 
 @end
 
@@ -25,17 +26,26 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // TODO: set up image
     self.user = PFUser.currentUser;
     PFFileObject *image = self.user[@"image"];
     NSURL *imageURL = [NSURL URLWithString:image.url];
     [self.profileImage setImageWithURL:imageURL];
-    //TODO: set up description & user
-    NSLog(@"%@", self.user[@"description"]);
-    NSLog(@"%@", self.user.description);
+    // Sets up description & user
     self.profileDescription.text = self.user[@"description"];
     self.profileName.text = self.user[@"username"];
     //TODO: set up Interest
+    self.arrayOfInterest = self.user[@"interests"];
+    self.interestsText.text = @"No interests :(";
+    if ([self.arrayOfInterest count]!=0){
+        for (NSString *interest in self.arrayOfInterest) {
+            // Check if string is empty so (Null) doesn't show
+            if ([self.interestsText.text isEqualToString:@"No interests :("]){
+                self.interestsText.text = [NSString stringWithFormat:@"%@", interest];
+            } else {
+                self.interestsText.text = [NSString stringWithFormat:@"%@, %@", self.interestsText.text, interest];
+            }
+        }
+    }
 }
 
 - (IBAction)logOutPressed:(id)sender {
