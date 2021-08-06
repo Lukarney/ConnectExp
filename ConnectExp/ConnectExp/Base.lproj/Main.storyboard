@@ -48,13 +48,13 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Interest" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HDV-sg-pT9">
-                                <rect key="frame" x="24" y="598" width="382" height="21"/>
+                                <rect key="frame" x="24" y="664" width="382" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jf2-XW-GQM">
-                                <rect key="frame" x="24" y="635" width="106.5" height="30"/>
+                                <rect key="frame" x="24" y="701" width="106.5" height="30"/>
                                 <state key="normal" title="Cooking">
                                     <color key="titleColor" systemColor="systemOrangeColor"/>
                                 </state>
@@ -66,7 +66,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gFf-YA-m8e">
-                                <rect key="frame" x="54" y="689" width="47" height="30"/>
+                                <rect key="frame" x="54" y="739" width="47" height="30"/>
                                 <state key="normal" title="Nature">
                                     <color key="titleColor" systemColor="systemOrangeColor"/>
                                 </state>
@@ -75,7 +75,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fm1-g2-ORe">
-                                <rect key="frame" x="176" y="689" width="62" height="30"/>
+                                <rect key="frame" x="176" y="739" width="62" height="30"/>
                                 <state key="normal" title="Traveling">
                                     <color key="titleColor" systemColor="systemOrangeColor"/>
                                 </state>
@@ -84,7 +84,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T4Z-46-NnT">
-                                <rect key="frame" x="186.5" y="635" width="41" height="30"/>
+                                <rect key="frame" x="186.5" y="701" width="41" height="30"/>
                                 <state key="normal" title="Music">
                                     <color key="titleColor" systemColor="systemOrangeColor"/>
                                 </state>
@@ -93,7 +93,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JkN-57-WB3">
-                                <rect key="frame" x="283.5" y="635" width="53" height="30"/>
+                                <rect key="frame" x="283.5" y="701" width="53" height="30"/>
                                 <state key="normal" title="Gaming">
                                     <color key="titleColor" systemColor="systemOrangeColor"/>
                                 </state>
@@ -114,7 +114,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Write here" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="sT9-nD-N1a">
-                                <rect key="frame" x="24" y="246.5" width="374" height="343.5"/>
+                                <rect key="frame" x="24" y="246.5" width="374" height="409.5"/>
                                 <color key="backgroundColor" systemColor="quaternarySystemFillColor"/>
                                 <color key="textColor" systemColor="labelColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -155,7 +155,7 @@
                                 </items>
                             </navigationBar>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TKM-zH-rVF">
-                                <rect key="frame" x="147" y="743" width="120" height="30"/>
+                                <rect key="frame" x="147" y="785" width="120" height="30"/>
                                 <color key="backgroundColor" name="AccentColor"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="120" id="quU-fd-YZK"/>
@@ -170,7 +170,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tzf-kC-4Xu">
-                                <rect key="frame" x="287" y="689" width="46" height="30"/>
+                                <rect key="frame" x="287" y="739" width="46" height="30"/>
                                 <state key="normal" title="Sports">
                                     <color key="titleColor" systemColor="systemOrangeColor"/>
                                 </state>
@@ -194,7 +194,7 @@
                             <constraint firstItem="d7y-sH-zPX" firstAttribute="trailing" secondItem="vaK-mC-XST" secondAttribute="trailing" id="Io1-XN-63H"/>
                             <constraint firstItem="h60-zr-NiJ" firstAttribute="top" secondItem="d7y-sH-zPX" secondAttribute="bottom" constant="8" id="JFv-47-qK0"/>
                             <constraint firstItem="sfr-xh-yhu" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="DjV-MB-0dv" secondAttribute="trailing" constant="32" id="M5Q-Ia-DdM"/>
-                            <constraint firstItem="gFf-YA-m8e" firstAttribute="top" secondItem="jf2-XW-GQM" secondAttribute="bottom" constant="24" id="M6S-aT-uOy"/>
+                            <constraint firstItem="gFf-YA-m8e" firstAttribute="top" secondItem="jf2-XW-GQM" secondAttribute="bottom" constant="8" id="M6S-aT-uOy"/>
                             <constraint firstItem="RfW-fc-JVF" firstAttribute="trailing" secondItem="sT9-nD-N1a" secondAttribute="trailing" constant="16" id="MZH-kF-nb6"/>
                             <constraint firstItem="RfW-fc-JVF" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="vaK-mC-XST" secondAttribute="trailing" constant="8" id="Mww-eO-V4P"/>
                             <constraint firstItem="T4Z-46-NnT" firstAttribute="bottom" secondItem="jf2-XW-GQM" secondAttribute="bottom" id="Na5-Fy-LGi"/>
@@ -227,10 +227,10 @@
                             <constraint firstItem="JkN-57-WB3" firstAttribute="leading" secondItem="T4Z-46-NnT" secondAttribute="trailing" constant="56" id="r23-xG-Wjg"/>
                             <constraint firstItem="sT9-nD-N1a" firstAttribute="leading" secondItem="h1k-RJ-UCd" secondAttribute="leading" id="t17-lj-UjF"/>
                             <constraint firstItem="sfr-xh-yhu" firstAttribute="leading" secondItem="vaK-mC-XST" secondAttribute="leading" id="tGi-SL-hdp"/>
-                            <constraint firstItem="TKM-zH-rVF" firstAttribute="top" secondItem="Fm1-g2-ORe" secondAttribute="bottom" constant="24" id="vQl-kH-ROb"/>
+                            <constraint firstItem="TKM-zH-rVF" firstAttribute="top" secondItem="Fm1-g2-ORe" secondAttribute="bottom" constant="16" id="vQl-kH-ROb"/>
                             <constraint firstItem="Fm1-g2-ORe" firstAttribute="centerX" secondItem="T4Z-46-NnT" secondAttribute="centerX" id="vVC-gE-Xju"/>
                             <constraint firstItem="AZQ-nz-N0z" firstAttribute="top" secondItem="RfW-fc-JVF" secondAttribute="top" id="wwb-jC-2dd"/>
-                            <constraint firstItem="TKM-zH-rVF" firstAttribute="centerY" secondItem="MuX-8n-yJt" secondAttribute="centerY" multiplier="1.8" id="xSR-Px-DaZ"/>
+                            <constraint firstItem="TKM-zH-rVF" firstAttribute="centerY" secondItem="MuX-8n-yJt" secondAttribute="centerY" multiplier="1.9" id="xSR-Px-DaZ"/>
                             <constraint firstItem="h60-zr-NiJ" firstAttribute="leading" secondItem="d7y-sH-zPX" secondAttribute="leading" id="xgh-o1-gmk"/>
                             <constraint firstItem="d7y-sH-zPX" firstAttribute="leading" secondItem="vaK-mC-XST" secondAttribute="leading" id="y8l-Of-Y7r"/>
                             <constraint firstItem="TKM-zH-rVF" firstAttribute="centerX" secondItem="MuX-8n-yJt" secondAttribute="centerX" id="zpc-HK-o1L"/>

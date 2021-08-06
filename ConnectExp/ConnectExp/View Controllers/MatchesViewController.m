@@ -30,13 +30,6 @@
     [self.tableView reloadData];
 }
 
-/*
- TODO: Order Matches by DESC Createdat of last message
- */
-
-- (void)fetchMatches {
-    // TODO: Call algo and get matches
-}
 - (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView                         cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
     MatchCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MatchCell"forIndexPath:indexPath];
     PFUser *matchID = self.arrayOfMatches[indexPath.row];

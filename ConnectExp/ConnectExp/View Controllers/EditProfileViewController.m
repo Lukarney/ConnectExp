@@ -117,8 +117,6 @@
 - (void)updateUser {
     PFUser *currentUser = [PFUser currentUser];
     if (currentUser) {
-        currentUser.username = self.usernameField.text;
-        currentUser.password = self.passwordField.text;
         currentUser[@"description"] = self.bioField.text;
         currentUser[@"interests"] = self.arrayOfInterest;
         currentUser[@"matches"] = self.arrayOfMatches;
