@@ -60,8 +60,6 @@ static const float CARD_WIDTH = 290; //%%% width of the draggable card
                 // Call users to get Array and dictionary
                 NSMutableArray *userIds = [self getListOfIds:users];
                 NSMutableDictionary *IID = [self createDictionaryOfInterests:users];
-                NSLog(@"userIds: %@", userIds);
-                NSLog(@"IID: %@", IID);
                 // Call algorithm to get matches
                 NSMutableDictionary *matchesDict = [self getMatchesV1:[userIds count] listOfIds:userIds InterestInDictionary:IID];
                 NSLog(@"matchesDict: %@", matchesDict);
@@ -185,10 +183,6 @@ static const float CARD_WIDTH = 290; //%%% width of the draggable card
     DraggableView *currentCard = [loadedCards objectAtIndex:0];
     PFUser *currentUser = [PFUser currentUser];
     PFUser *matchedUser = currentCard.userPointer;
-    NSLog(@"loaded card user: %@", matchedUser);
-    NSLog(@"loaded card now: %@", [loadedCards objectAtIndex:0]);
-    NSLog(@"current User: %@", currentUser);
-    NSLog(@"current matches: %@", self.arrayOfMatches);
     //add matched user to matched list of current user
     if (!([currentUser[@"matches"] containsObject:matchedUser]) &&
         !([matchedUser.objectId isEqual:currentUser.objectId])){
@@ -285,9 +279,6 @@ static const float CARD_WIDTH = 290; //%%% width of the draggable card
             NSMutableArray *arrayForJ = [[NSMutableArray alloc] init];
             [arrayForI addObject:keyForJ];
             [arrayForJ addObject:keyForI];
-            NSLog(@"count before calc: %d", count);
-            NSLog(@"length before calc: %lu", (unsigned long)interestLengthOfI);
-            NSLog(@"calc before calc: %f", (float)count/(float)interestLengthOfI);
             // Add Score
             [arrayForI addObject:[NSNumber  numberWithFloat:(float)count/(float)interestLengthOfI]];
             [arrayForJ addObject:[NSNumber numberWithFloat:(float)count/(float)interestLengthOfJ]];
@@ -300,10 +291,11 @@ static const float CARD_WIDTH = 290; //%%% width of the draggable card
     {
         // Sorts the array
         [res[key] sortUsingComparator:^(id obj1, id obj2) {
-            if ([obj1 objectAtIndex:1] > [obj2 objectAtIndex:1]) {
-                return (NSComparisonResult)NSOrderedDescending;
-            } else if ([obj1 objectAtIndex:1] < [obj2 objectAtIndex:1]) {
+            NSLog(@"Obj1&2: %@, %@", [obj1 objectAtIndex:1], [obj2 objectAtIndex:1]);
+            if ([[obj1 objectAtIndex:1] floatValue] > [[obj2 objectAtIndex:1] floatValue]) {
                 return (NSComparisonResult)NSOrderedAscending;
+            } else if ([[obj1 objectAtIndex:1] floatValue] < [[obj2 objectAtIndex:1] floatValue]) {
+                return (NSComparisonResult)NSOrderedDescending;
             } else {
                 return (NSComparisonResult)NSOrderedSame;
             }
@@ -312,6 +304,7 @@ static const float CARD_WIDTH = 290; //%%% width of the draggable card
     return res;
         
 }
+
 - (NSMutableArray *)getUsersOrdered:(PFUser *)currentUser
                            getUsers:(NSArray *)users
                         matchesDict:(NSMutableDictionary *)matchesDict {
@@ -320,10 +313,12 @@ static const float CARD_WIDTH = 290; //%%% width of the draggable card
     NSMutableArray *potentialMatches = matchesDict[currentUser.objectId];
     for (NSMutableArray *matchesList in potentialMatches) {
         [usersOrdered addObject:[matchesList objectAtIndex:0]];
+        [returnedUsers addObject:[matchesList objectAtIndex:0]];
     }
     for (PFUser *user in users){
         if ([usersOrdered containsObject:user.objectId]){
-            [returnedUsers addObject:user];
+            NSUInteger userIndex = [usersOrdered indexOfObject:user.objectId];
+            [returnedUsers replaceObjectAtIndex:userIndex withObject:user];
         }
         
     }

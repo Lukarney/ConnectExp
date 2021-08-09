@@ -103,7 +103,6 @@
     newPFUser[@"username"] = self.usernameField.text;
     newPFUser[@"interests"] = self.arrayOfInterest;
     newPFUser[@"matches"] = self.arrayOfMatches;
-    NSLog(@"%@", newPFUser);
     // Call sign up function on the object
     [newPFUser signUpInBackgroundWithBlock:^(BOOL succeeded, NSError * error) {
         if (error != nil) {
