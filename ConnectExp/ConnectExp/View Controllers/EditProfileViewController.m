@@ -111,6 +111,13 @@
             NSLog(@"User registered successfully");
         }
     }];
+    [newPFUser saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+        if (succeeded) {
+        NSLog(@"User updated successfully");
+        } else {
+        NSLog(@"Error: %@", error.localizedDescription);
+        }
+    }];
 }
 
 - (void)updateUser {
