@@ -27,18 +27,18 @@
     self.draggableBackground = [[DraggableViewInfo alloc]initWithFrame:self.view.frame];
     [self.view addSubview:self.draggableBackground];
     // Add Global Queue here
-    dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^(void){
-        //Background Thread
-        PFQuery *query = [PFUser query];
-        [query includeKey:@"username"];
-        // TODO: Fetch data asynchronously
-        [query findObjectsInBackgroundWithBlock:^(NSArray *users, NSError *error) {
-            if (users != nil) {
-                
-                    // Call users to get Array and dictionary
-                    NSMutableArray *userIds = [self getListOfIds:users];
-                    NSMutableDictionary *IID = [self createDictionaryOfInterests:users];
-                    // Call algorithm to get matches
+    //Background Thread
+    PFQuery *query = [PFUser query];
+    [query includeKey:@"username"];
+    // TODO: Fetch data asynchronously
+    [query findObjectsInBackgroundWithBlock:^(NSArray *users, NSError *error) {
+        if (users != nil) {
+            
+                // Call users to get Array and dictionary
+                NSMutableArray *userIds = [self getListOfIds:users];
+                NSMutableDictionary *IID = [self createDictionaryOfInterests:users];
+                // Call algorithm to get matches
+            dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^(void){
                 dispatch_async(dispatch_get_main_queue(), ^(void){
                     NSMutableDictionary *matchesDict = [self getMatchesV1:[userIds count] listOfIds:userIds InterestInDictionary:IID];
                     NSLog(@"matchesDict: %@", matchesDict);
@@ -48,17 +48,15 @@
                     // TODO: set out example cards to be equal to the users in the dictionary from current users keys
                     self.draggableBackground.exampleCardLabels = orderedUsers;
                 });
-            } else {
-                NSLog(@"%@", error.localizedDescription);
-            }
-        }];
-    });
+            });
+        } else {
+            NSLog(@"%@", error.localizedDescription);
+        }
+    }];
     // Maybe make a delegate fxn for the draggable view
 
 }
--(void)viewDidAppear:(BOOL)animated{
-    
-}
+
 
 - (NSMutableArray *)getListOfIds:(NSMutableArray *)users {
     NSMutableArray *ArrayOfUserIds = [[NSMutableArray alloc] init];

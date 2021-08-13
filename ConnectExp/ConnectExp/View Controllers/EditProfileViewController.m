@@ -7,6 +7,8 @@
 #import "AppDelegate.h"
 #import "EditProfileViewController.h"
 #import "LoginViewController.h"
+#import "DraggableViewInfo.h"
+#import "SwipingViewController.h"
 #import <Parse/Parse.h>
 
 @interface EditProfileViewController ()
