@@ -16,6 +16,7 @@
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) NSMutableArray *queriedUsers;
 @property (nonatomic, strong) NSMutableArray *arrayOfMatches;
+@property (nonatomic, strong) UIRefreshControl *refreshControl;
 
 @end
 
@@ -25,11 +26,18 @@
     [super viewDidLoad];
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
+    [self fetchMatches];
+     self.refreshControl = [[UIRefreshControl alloc] init];
+    [self.refreshControl addTarget:self action:@selector(fetchMatches) forControlEvents:UIControlEventValueChanged];
+    [self.tableView insertSubview:self.refreshControl atIndex:0];
+    
+}
+- (void) fetchMatches {
     self.arrayOfMatches = PFUser.currentUser[@"matches"];
     NSLog(@"array of matches: %@", self.arrayOfMatches);
     [self.tableView reloadData];
+    [self.refreshControl endRefreshing];
 }
-
 - (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView                         cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
     MatchCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MatchCell"forIndexPath:indexPath];
     PFUser *matchID = self.arrayOfMatches[indexPath.row];

@@ -104,18 +104,18 @@
     newPFUser[@"interests"] = self.arrayOfInterest;
     newPFUser[@"matches"] = self.arrayOfMatches;
     // Call sign up function on the object
-    [newPFUser signUpInBackgroundWithBlock:^(BOOL succeeded, NSError * error) {
-        if (error != nil) {
-            NSLog(@"Error: %@", error.localizedDescription);
-        } else {
-            NSLog(@"User registered successfully");
-        }
-    }];
     [newPFUser saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         if (succeeded) {
         NSLog(@"User updated successfully");
         } else {
         NSLog(@"Error: %@", error.localizedDescription);
+        }
+    }];
+    [newPFUser signUpInBackgroundWithBlock:^(BOOL succeeded, NSError * error) {
+        if (error != nil) {
+            NSLog(@"Error: %@", error.localizedDescription);
+        } else {
+            NSLog(@"User registered successfully");
         }
     }];
 }

@@ -14,6 +14,7 @@
 @interface SwipingViewController ()
 @property (weak, nonatomic) IBOutlet UIView *card;
 @property (strong, nonatomic) DraggableView *draggableView;
+@property (strong, nonatomic) DraggableViewInfo *draggableBackground;
 @property (strong, nonatomic) NSMutableArray* arrayOfProfiles;
 
 @end
@@ -23,8 +24,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    DraggableViewInfo *draggableBackground = [[DraggableViewInfo alloc]initWithFrame:self.view.frame];
-    [self.view addSubview:draggableBackground];
+    self.draggableBackground = [[DraggableViewInfo alloc]initWithFrame:self.view.frame];
+    [self.view addSubview:self.draggableBackground];
     // Add Global Queue here
     dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^(void){
         //Background Thread
@@ -33,18 +34,19 @@
         // TODO: Fetch data asynchronously
         [query findObjectsInBackgroundWithBlock:^(NSArray *users, NSError *error) {
             if (users != nil) {
-                dispatch_async(dispatch_get_main_queue(), ^(void){
+                
                     // Call users to get Array and dictionary
                     NSMutableArray *userIds = [self getListOfIds:users];
                     NSMutableDictionary *IID = [self createDictionaryOfInterests:users];
                     // Call algorithm to get matches
+                dispatch_async(dispatch_get_main_queue(), ^(void){
                     NSMutableDictionary *matchesDict = [self getMatchesV1:[userIds count] listOfIds:userIds InterestInDictionary:IID];
                     NSLog(@"matchesDict: %@", matchesDict);
                     NSMutableArray *orderedUsers = [self getUsersOrdered:PFUser.currentUser getUsers:users matchesDict:matchesDict];
                     NSLog(@"orderedUsers: %@", orderedUsers);
                     NSLog(@"self: %@", PFUser.currentUser.objectId);
                     // TODO: set out example cards to be equal to the users in the dictionary from current users keys
-                    draggableBackground.exampleCardLabels = orderedUsers;
+                    self.draggableBackground.exampleCardLabels = orderedUsers;
                 });
             } else {
                 NSLog(@"%@", error.localizedDescription);
@@ -54,6 +56,10 @@
     // Maybe make a delegate fxn for the draggable view
 
 }
+-(void)viewDidAppear:(BOOL)animated{
+    
+}
+
 - (NSMutableArray *)getListOfIds:(NSMutableArray *)users {
     NSMutableArray *ArrayOfUserIds = [[NSMutableArray alloc] init];
     for (PFUser *user in users)
